@@ -13,7 +13,7 @@
                     <span id="miningBalance">{{ $balance }}</span> TRX
                 </div>
                 <div class="stat-label">Daily Profit: 
-                    <span id="dailyProfit">0.000000</span> TRX
+                    <span id="dailyProfit">2.000000</span> TRX
                 </div>
             </div>
 
@@ -77,7 +77,7 @@
                             </div>
                             <div class="col-md-4 text-right">
                                 <!-- Hidden CSRF token for JavaScript -->
-                                <input type="hidden" name="_token" value="YJB04lKZqwZJYELpppdnjo2ZtLzKPWTT0s3yhsPX" />
+                                @csrf
 
                                 <div id="bonus-button-container">
                                     <!-- hCaptcha -->
@@ -195,7 +195,7 @@
 
                 <div class="profit-stat-item">
                     <div class="profit-stat-label">Daily Profit</div>
-                    <div class="profit-stat-value" id="profitDailyProfit">0.000000</div>
+                    <div class="profit-stat-value" id="profitDailyProfit">2.000000</div>
                     <div class="profit-stat-change positive">+$0.00</div>
                 </div>
 
@@ -293,301 +293,6 @@
         </div>
     </div>
 
-    <!-- Mining Terminal Modal -->
-    <div class="modal fade" id="miningTerminalModal" tabindex="-1" role="dialog" aria-labelledby="miningTerminalModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-lg" role="document">
-            <div class="modal-content" style="background: var(--card); border: 1px solid rgba(255, 255, 255, 0.06);">
-                <div class="modal-header" style="border-bottom: 1px solid rgba(255, 255, 255, 0.06);">
-                    <h5 class="modal-title" id="miningTerminalModalLabel" style="color: var(--text);">
-                        <i class="fa fa-terminal" style="color: #22c55e; margin-right: 8px;"></i>
-                        Advanced Mining Terminal
-                        <span
-                            id="terminalConnectionStatus"
-                            style="margin-left: 12px; font-size: 12px; padding: 2px 8px; border-radius: 12px; background: rgba(34, 197, 94, 0.2); color: #22c55e; border: 1px solid rgba(34, 197, 94, 0.3);"
-                        >
-                            <i class="fa fa-wifi" style="margin-right: 4px;"></i>ONLINE
-                        </span>
-                    </h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close" style="color: var(--text);">
-                        <span aria-hidden="true">×</span>
-                    </button>
-                </div>
-                <div class="modal-body" style="padding: 0;">
-                    <!-- Full Terminal Window -->
-                    <div
-                        class="full-terminal-window"
-                        style="
-                            background: #0a0a0a;
-                            border: 1px solid #333;
-                            border-radius: 8px;
-                            margin: 16px;
-                            font-family: 'Courier New', monospace;
-                            font-size: 12px;
-                            color: #00ff00;
-                            height: 400px;
-                            overflow: hidden;
-                            position: relative;
-                        "
-                    >
-                        <div class="full-terminal-content" id="fullTerminalContent">
-                            <!-- Full terminal content will be populated by JavaScript -->
-                        </div>
-                        <div class="full-terminal-cursor" style="position: absolute; bottom: 16px; left: 16px; width: 10px; height: 16px; background: #00ff00; animation: blink 1s infinite;"></div>
-                    </div>
-
-                    <!-- Mining Statistics Grid -->
-                    <div class="mining-stats-grid" style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin: 16px;">
-                        <div style="text-align: center; padding: 12px; background: rgba(34, 197, 94, 0.1); border: 1px solid rgba(34, 197, 94, 0.2); border-radius: 8px;">
-                            <div style="font-size: 11px; color: var(--muted); margin-bottom: 4px;">Total Hashpower</div>
-                            <div style="font-size: 16px; color: #22c55e; font-weight: 700;" id="modalTotalHashpower">0 GH/s</div>
-                        </div>
-                        <div style="text-align: center; padding: 12px; background: rgba(59, 130, 246, 0.1); border: 1px solid rgba(59, 130, 246, 0.2); border-radius: 8px;">
-                            <div style="font-size: 11px; color: var(--muted); margin-bottom: 4px;">Active Miners</div>
-                            <div style="font-size: 16px; color: #3b82f6; font-weight: 700;" id="modalActiveMiners">1</div>
-                        </div>
-                        <div style="text-align: center; padding: 12px; background: rgba(245, 158, 11, 0.1); border: 1px solid rgba(245, 158, 11, 0.2); border-radius: 8px;">
-                            <div style="font-size: 11px; color: var(--muted); margin-bottom: 4px;">Network Difficulty</div>
-                            <div style="font-size: 16px; color: #f59e0b; font-weight: 700;" id="modalNetworkDifficulty">--</div>
-                        </div>
-                        <div style="text-align: center; padding: 12px; background: rgba(168, 85, 247, 0.1); border: 1px solid rgba(168, 85, 247, 0.2); border-radius: 8px;">
-                            <div style="font-size: 11px; color: var(--muted); margin-bottom: 4px;">Pool Status</div>
-                            <div style="font-size: 16px; color: #a855f7; font-weight: 700;" id="modalPoolStatus">Online</div>
-                        </div>
-                    </div>
-
-                    <!-- Mining Pool Information -->
-                    <div class="mining-pool-info" style="margin: 16px; padding: 16px; background: rgba(59, 130, 246, 0.05); border: 1px solid rgba(59, 130, 246, 0.1); border-radius: 8px;">
-                        <h6 style="color: var(--text); margin-bottom: 12px; font-size: 14px;">
-                            <i class="fa fa-server" style="color: #3b82f6; margin-right: 8px;"></i>
-                            Mining Pool Information
-                        </h6>
-                        <div class="pool-details" style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px;">
-                            <div>
-                                <div style="font-size: 11px; color: var(--muted); margin-bottom: 4px;">Pool URL</div>
-                                <div style="font-size: 12px; color: var(--text); font-family: 'Courier New', monospace;">stratum+tcp://us2.litecoinpool.org:8080</div>
-                            </div>
-                            <div>
-                                <div style="font-size: 11px; color: var(--muted); margin-bottom: 4px;">Worker Name</div>
-                                <div style="font-size: 12px; color: var(--text); font-family: 'Courier New', monospace;">907721900</div>
-                            </div>
-                            <div>
-                                <div style="font-size: 11px; color: var(--muted); margin-bottom: 4px;">Pool Fee</div>
-                                <div style="font-size: 12px; color: var(--text);">1.5%</div>
-                            </div>
-                            <div>
-                                <div style="font-size: 11px; color: var(--muted); margin-bottom: 4px;">Payment Method</div>
-                                <div style="font-size: 12px; color: var(--text);">PPLNS</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Withdrawal Modal Button State Management -->
-    <script>
-        document.addEventListener("DOMContentLoaded", function () {
-            // Button state management for withdrawal modal
-            const withdrawalModal = document.getElementById("withdrawalModal");
-            if (withdrawalModal) {
-                const confirmBtn = document.getElementById("withdrawalConfirmBtn");
-                const processingBtn = document.getElementById("withdrawalProcessingBtn");
-
-                if (confirmBtn && processingBtn) {
-                    // Ensure initial state
-                    confirmBtn.style.display = "inline-block";
-                    processingBtn.style.display = "none";
-
-                    // Handle button click to show processing state
-                    confirmBtn.addEventListener("click", function () {
-                        // Show processing button immediately
-                        confirmBtn.style.display = "none";
-                        processingBtn.style.display = "inline-block";
-
-                        // Fallback: reset button states after 30 seconds if something goes wrong
-                        setTimeout(() => {
-                            confirmBtn.style.display = "inline-block";
-                            processingBtn.style.display = "none";
-                        }, 30000);
-                    });
-
-                    // Listen for the modal show event to reset button states
-                    $(withdrawalModal).on("shown.bs.modal", function () {
-                        confirmBtn.style.display = "inline-block";
-                        processingBtn.style.display = "none";
-
-                        // Clear any existing error messages
-                        const errorAlert = withdrawalModal.querySelector(".alert-danger");
-                        if (errorAlert) {
-                            errorAlert.remove();
-                        }
-                    });
-
-                    // Listen for modal hide event to reset button states
-                    $(withdrawalModal).on("hidden.bs.modal", function () {
-                        confirmBtn.style.display = "inline-block";
-                        processingBtn.style.display = "none";
-                    });
-
-                    // Listen for Livewire errors to reset button states
-                    Livewire.on("withdrawal-error", () => {
-                        confirmBtn.style.display = "inline-block";
-                        processingBtn.style.display = "none";
-                    });
-
-                    // Also reset button states when there are validation errors
-                    Livewire.on("validation-failed", () => {
-                        confirmBtn.style.display = "inline-block";
-                        processingBtn.style.display = "none";
-                    });
-                }
-            }
-        });
-    </script>
-
-    <script>
-    document.addEventListener("DOMContentLoaded", function () {
-        const miningRewardsCtx = document.getElementById("miningRewardsChart").getContext("2d");
-        const loading = document.getElementById("chartLoadingMessage");
-
-        loading.style.display = "block";
-
-        const rewardsHistoryData = [
-            { date: "Oct 06", reward: 0, hashpower: 0 },
-            { date: "Oct 07", reward: 0, hashpower: 0 },
-            { date: "Oct 08", reward: 0, hashpower: 0 },
-            { date: "Oct 09", reward: 0, hashpower: 0 },
-            { date: "Oct 10", reward: 0, hashpower: 0 },
-            { date: "Oct 11", reward: 0, hashpower: 0 },
-            { date: "Oct 12", reward: 0, hashpower: 0 },
-            { date: "Oct 13", reward: 0, hashpower: 0 },
-            { date: "Oct 14", reward: 0, hashpower: 0 },
-            { date: "Oct 15", reward: 0, hashpower: 0 },
-            { date: "Oct 16", reward: 0, hashpower: 0 },
-            { date: "Oct 17", reward: 0, hashpower: 0 },
-            { date: "Oct 18", reward: 0, hashpower: 0 },
-            { date: "Oct 19", reward: 0, hashpower: 0 },
-            { date: "Oct 20", reward: 0, hashpower: 0 },
-            { date: "Oct 21", reward: 0, hashpower: 0 },
-            { date: "Oct 22", reward: 0, hashpower: 0 },
-            { date: "Oct 23", reward: 0, hashpower: 0 },
-            { date: "Oct 24", reward: 0, hashpower: 0 },
-            { date: "Oct 25", reward: 0, hashpower: 0 },
-            { date: "Oct 26", reward: 0, hashpower: 0 },
-            { date: "Oct 27", reward: 0, hashpower: 0 },
-            { date: "Oct 28", reward: 0, hashpower: 0 },
-            { date: "Oct 29", reward: 0, hashpower: 0 },
-            { date: "Oct 30", reward: 0, hashpower: 0 },
-            { date: "Oct 31", reward: 0, hashpower: 0 },
-            { date: "Nov 01", reward: 0, hashpower: 0 },
-            { date: "Nov 02", reward: 0, hashpower: 0 },
-            { date: "Nov 03", reward: 0, hashpower: 0 },
-            { date: "Nov 04", reward: 0, hashpower: 0 },
-        ];
-
-        const processRewardsData = () => {
-            const labels = [];
-            const rewardsData = [];
-            const cumulativeData = [];
-            const hashpowerData = [];
-            let cumulativeRewards = 0;
-
-            rewardsHistoryData.forEach((item, index) => {
-                const dayNames = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
-                const monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
-                let dateLabel = item.date;
-
-                if (index === 0) {
-                    dateLabel = "Today";
-                } else if (index === rewardsHistoryData.length - 1) {
-                    const date = new Date();
-                    date.setDate(date.getDate() - 29);
-                    const dayName = dayNames[date.getDay()];
-                    const dayDate = date.getDate();
-                    const monthName = monthNames[date.getMonth()];
-                    dateLabel = dayName + " " + dayDate + " " + monthName;
-                }
-
-                labels.push(dateLabel);
-                rewardsData.push(item.reward);
-                cumulativeRewards += item.reward;
-                cumulativeData.push(cumulativeRewards);
-                hashpowerData.push(item.hashpower);
-            });
-
-            return { labels, rewardsData, cumulativeData, hashpowerData };
-        };
-
-        const chartData = processRewardsData();
-
-        // render chart
-        setTimeout(() => {
-            new Chart(miningRewardsCtx, {
-                type: "line",
-                data: {
-                    labels: chartData.labels,
-                    datasets: [
-                        {
-                            label: "Daily Reward (BIE)",
-                            data: chartData.rewardsData,
-                            borderColor: "rgba(34, 197, 94, 1)",
-                            backgroundColor: "rgba(34, 197, 94, 0.3)",
-                            borderWidth: 2,
-                            tension: 0.3,
-                            fill: true,
-                            yAxisID: 'y',
-                        },
-                        {
-                            label: "Hashpower (H/s)",
-                            data: chartData.hashpowerData,
-                            borderColor: "rgba(59, 130, 246, 1)",
-                            backgroundColor: "rgba(59, 130, 246, 0.3)",
-                            borderWidth: 2,
-                            tension: 0.3,
-                            fill: false,
-                            yAxisID: 'y1',
-                        }
-                    ],
-                },
-                options: {
-                    responsive: true,
-                    interaction: { mode: "index", intersect: false },
-                    stacked: false,
-                    plugins: {
-                        legend: { display: true, labels: { color: "#22c55e" } },
-                    },
-                    scales: {
-                        y: {
-                            type: "linear",
-                            display: true,
-                            position: "left",
-                            beginAtZero: true,
-                            grid: { color: "rgba(255,255,255,0.1)" },
-                        },
-                        y1: {
-                            type: "linear",
-                            display: true,
-                            position: "right",
-                            beginAtZero: true,
-                            grid: { drawOnChartArea: false },
-                        },
-                        x: {
-                            ticks: { color: "#ccc" },
-                            grid: { color: "rgba(255,255,255,0.05)" },
-                        }
-                    }
-                },
-            });
-
-            loading.style.display = "none";
-        }, 1000);
-    });
-    </script>
-
     <!-- Mining Dashboard Scripts -->
     <script>
         document.addEventListener("DOMContentLoaded", function (e) {
@@ -596,14 +301,14 @@
             const fiatBalance = document.getElementById("fiatBalance");
             const dailyProfit = document.getElementById("dailyProfit");
             let daily_profit = dailyProfit.innerText;
-            let balance_value = 0.0;
+            let balance_value = 23.00000000;
             let per_second = (daily_profit / 86400).toFixed(15);
 
             setInterval(function () {
                 balance_value = parseFloat(balance_value) + parseFloat(per_second);
                 balance.innerText = parseFloat(balance_value).toFixed(6);
                 fiatBalance.innerText = (balance.innerText * currentRate).toFixed(5);
-            }, 1500);
+            }, 100);
 
             // Initialize Daily Bonus System
             initializeDailyBonus();
@@ -1194,6 +899,146 @@
                 }, 5000);
             }
         }
+    </script>
+
+    <!-- 30-Day Mining Rewards Chart Script -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const miningRewardsCtx = document.getElementById("miningRewardsChart").getContext("2d");
+            const loading = document.getElementById("chartLoadingMessage");
+
+            loading.style.display = "block";
+
+            const rewardsHistoryData = [
+                { date: "Oct 06", reward: 0, hashpower: 0 },
+                { date: "Oct 07", reward: 0, hashpower: 0 },
+                { date: "Oct 08", reward: 0, hashpower: 0 },
+                { date: "Oct 09", reward: 0, hashpower: 0 },
+                { date: "Oct 10", reward: 0, hashpower: 0 },
+                { date: "Oct 11", reward: 0, hashpower: 0 },
+                { date: "Oct 12", reward: 0, hashpower: 0 },
+                { date: "Oct 13", reward: 0, hashpower: 0 },
+                { date: "Oct 14", reward: 0, hashpower: 0 },
+                { date: "Oct 15", reward: 0, hashpower: 0 },
+                { date: "Oct 16", reward: 0, hashpower: 0 },
+                { date: "Oct 17", reward: 0, hashpower: 0 },
+                { date: "Oct 18", reward: 0, hashpower: 0 },
+                { date: "Oct 19", reward: 0, hashpower: 0 },
+                { date: "Oct 20", reward: 0, hashpower: 0 },
+                { date: "Oct 21", reward: 0, hashpower: 0 },
+                { date: "Oct 22", reward: 0, hashpower: 0 },
+                { date: "Oct 23", reward: 0, hashpower: 0 },
+                { date: "Oct 24", reward: 0, hashpower: 0 },
+                { date: "Oct 25", reward: 0, hashpower: 0 },
+                { date: "Oct 26", reward: 0, hashpower: 0 },
+                { date: "Oct 27", reward: 0, hashpower: 0 },
+                { date: "Oct 28", reward: 0, hashpower: 0 },
+                { date: "Oct 29", reward: 0, hashpower: 0 },
+                { date: "Oct 30", reward: 0, hashpower: 0 },
+                { date: "Oct 31", reward: 0, hashpower: 0 },
+                { date: "Nov 01", reward: 0, hashpower: 0 },
+                { date: "Nov 02", reward: 0, hashpower: 0 },
+                { date: "Nov 03", reward: 0, hashpower: 0 },
+                { date: "Nov 04", reward: 0, hashpower: 0 },
+            ];
+
+            const processRewardsData = () => {
+                const labels = [];
+                const rewardsData = [];
+                const cumulativeData = [];
+                const hashpowerData = [];
+                let cumulativeRewards = 0;
+
+                rewardsHistoryData.forEach((item, index) => {
+                    const dayNames = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+                    const monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+                    let dateLabel = item.date;
+
+                    if (index === 0) {
+                        dateLabel = "Today";
+                    } else if (index === rewardsHistoryData.length - 1) {
+                        const date = new Date();
+                        date.setDate(date.getDate() - 29);
+                        const dayName = dayNames[date.getDay()];
+                        const dayDate = date.getDate();
+                        const monthName = monthNames[date.getMonth()];
+                        dateLabel = dayName + " " + dayDate + " " + monthName;
+                    }
+
+                    labels.push(dateLabel);
+                    rewardsData.push(item.reward);
+                    cumulativeRewards += item.reward;
+                    cumulativeData.push(cumulativeRewards);
+                    hashpowerData.push(item.hashpower);
+                });
+
+                return { labels, rewardsData, cumulativeData, hashpowerData };
+            };
+
+            const chartData = processRewardsData();
+
+            // render chart
+            setTimeout(() => {
+                new Chart(miningRewardsCtx, {
+                    type: "line",
+                    data: {
+                        labels: chartData.labels,
+                        datasets: [
+                            {
+                                label: "Daily Reward (BIE)",
+                                data: chartData.rewardsData,
+                                borderColor: "rgba(34, 197, 94, 1)",
+                                backgroundColor: "rgba(34, 197, 94, 0.3)",
+                                borderWidth: 2,
+                                tension: 0.3,
+                                fill: true,
+                                yAxisID: 'y',
+                            },
+                            {
+                                label: "Hashpower (H/s)",
+                                data: chartData.hashpowerData,
+                                borderColor: "rgba(59, 130, 246, 1)",
+                                backgroundColor: "rgba(59, 130, 246, 0.3)",
+                                borderWidth: 2,
+                                tension: 0.3,
+                                fill: false,
+                                yAxisID: 'y1',
+                            }
+                        ],
+                    },
+                    options: {
+                        responsive: true,
+                        interaction: { mode: "index", intersect: false },
+                        stacked: false,
+                        plugins: {
+                            legend: { display: true, labels: { color: "#22c55e" } },
+                        },
+                        scales: {
+                            y: {
+                                type: "linear",
+                                display: true,
+                                position: "left",
+                                beginAtZero: true,
+                                grid: { color: "rgba(255,255,255,0.1)" },
+                            },
+                            y1: {
+                                type: "linear",
+                                display: true,
+                                position: "right",
+                                beginAtZero: true,
+                                grid: { drawOnChartArea: false },
+                            },
+                            x: {
+                                ticks: { color: "#ccc" },
+                                grid: { color: "rgba(255,255,255,0.05)" },
+                            }
+                        }
+                    },
+                });
+
+                loading.style.display = "none";
+            }, 1000);
+        });
     </script>
 
 </x-layout_backend>
