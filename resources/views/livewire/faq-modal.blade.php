@@ -39,3 +39,28 @@
         </div>
     </div>
 </div>
+
+<!-- FAQ Modal Scripts -->
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+        const faqItems = document.querySelectorAll(".faq-item");
+
+        faqItems.forEach(item => {
+            item.querySelector(".faq-question").addEventListener("click", () => {
+                faqItems.forEach(i => i.classList.toggle("active", i === item && !item.classList.contains("active")));
+            });
+        });
+
+        const observer = new IntersectionObserver(entries => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const el = entry.target;
+                    el.style.animationDelay = el.dataset.aosDelay || "0ms";
+                    el.style.animationPlayState = "running";
+                }
+            });
+        }, { threshold: 0.1, rootMargin: "0px 0px -50px 0px" });
+
+        faqItems.forEach(item => observer.observe(item));
+    });
+</script>

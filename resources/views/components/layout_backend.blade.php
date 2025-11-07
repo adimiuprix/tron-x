@@ -3552,9 +3552,6 @@
                         <a class="btn ghost" href="#withdrawalModal" data-toggle="modal" data-target="#withdrawalModal">Withdraw</a>
                         <a class="btn primary" href="/buy-hash">Buy Hash</a>
                         <div class="dropdown d-none d-md-block">
-                            <a class="btn ghost dropdown-toggle" href="#userMenu" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                miuprix@gm...
-                            </a>
 
                             @include('partialls.menu-dropdown')
 

@@ -33,9 +33,9 @@
                 </span>
             </h1>
             
-            @guest
+            @if (!session()->has('user'))
             @include('partialls.hero-login-compact')
-            @endguest
+            @endif
     
             <!-- Small Trustpilot Widget below Login Card -->
             <div class="hero-trustpilot-widget">
@@ -95,7 +95,7 @@
 
             <div class="hero-actions">
                 {{-- Saat belum login --}}
-                @guest
+                @if (!session()->has('user'))
                 <button class="btn primary" onclick="openLoginModal()">
                     <i class="fas fa-rocket"></i>
                     Start Mining Now
@@ -103,15 +103,15 @@
                 <a href="#features" class="btn secondary">Explore Features</a>
                 @else
                 {{-- Saat sudah login --}}
-                <a href="" class="btn primary">
+                <a href="{{ route('account') }}" class="btn primary">
                     <i class="fas fa-tachometer-alt"></i>
                     Go to Dashboard
                 </a>
-                <a href="" class="btn secondary">
+                <a href="{{ route('buy.hash') }}" class="btn secondary">
                     <i class="fas fa-microchip"></i>
                     Buy Hashpower
                 </a>
-                @endguest
+                @endif
             </div>
 
         </div>
@@ -125,7 +125,7 @@
                     <i class="fas fa-users"></i>
                 </div>
                 <div class="stat-content">
-                    <div class="stat-number">4,398+</div>
+                    <div class="stat-number">{{ $minners }}+</div>
                     <div class="stat-label">Active Miners</div>
                 </div>
             </div>
@@ -134,7 +134,7 @@
                     <i class="fas fa-wallet"></i>
                 </div>
                 <div class="stat-content">
-                    <div class="stat-number">9,852</div>
+                    <div class="stat-number">{{ $tot_deposit }}</div>
                     <div class="stat-label">TRX Deposited</div>
                 </div>
             </div>
@@ -143,7 +143,7 @@
                     <i class="fas fa-coins"></i>
                 </div>
                 <div class="stat-content">
-                    <div class="stat-number">3,720</div>
+                    <div class="stat-number">{{ $tot_withdraw }}</div>
                     <div class="stat-label">TRX Withdrawn</div>
                 </div>
             </div>
@@ -152,7 +152,7 @@
                     <i class="fas fa-clock"></i>
                 </div>
                 <div class="stat-content">
-                    <div class="stat-number">44+</div>
+                    <div class="stat-number">{{ $running_day }}+</div>
                     <div class="stat-label">Days Online</div>
                 </div>
             </div>

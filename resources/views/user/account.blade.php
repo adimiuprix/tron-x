@@ -449,194 +449,144 @@
         });
     </script>
 
-    <!-- FAQ Modal Scripts -->
     <script>
-        document.addEventListener("DOMContentLoaded", function () {
-            // FAQ Toggle Functionality
-            const faqItems = document.querySelectorAll(".faq-item");
+    document.addEventListener("DOMContentLoaded", function () {
+        const miningRewardsCtx = document.getElementById("miningRewardsChart").getContext("2d");
+        const loading = document.getElementById("chartLoadingMessage");
 
-            faqItems.forEach((item) => {
-                const question = item.querySelector(".faq-question");
-                const answer = item.querySelector(".faq-answer");
+        loading.style.display = "block";
 
-                question.addEventListener("click", function () {
-                    const isActive = item.classList.contains("active");
+        const rewardsHistoryData = [
+            { date: "Oct 06", reward: 0, hashpower: 0 },
+            { date: "Oct 07", reward: 0, hashpower: 0 },
+            { date: "Oct 08", reward: 0, hashpower: 0 },
+            { date: "Oct 09", reward: 0, hashpower: 0 },
+            { date: "Oct 10", reward: 0, hashpower: 0 },
+            { date: "Oct 11", reward: 0, hashpower: 0 },
+            { date: "Oct 12", reward: 0, hashpower: 0 },
+            { date: "Oct 13", reward: 0, hashpower: 0 },
+            { date: "Oct 14", reward: 0, hashpower: 0 },
+            { date: "Oct 15", reward: 0, hashpower: 0 },
+            { date: "Oct 16", reward: 0, hashpower: 0 },
+            { date: "Oct 17", reward: 0, hashpower: 0 },
+            { date: "Oct 18", reward: 0, hashpower: 0 },
+            { date: "Oct 19", reward: 0, hashpower: 0 },
+            { date: "Oct 20", reward: 0, hashpower: 0 },
+            { date: "Oct 21", reward: 0, hashpower: 0 },
+            { date: "Oct 22", reward: 0, hashpower: 0 },
+            { date: "Oct 23", reward: 0, hashpower: 0 },
+            { date: "Oct 24", reward: 0, hashpower: 0 },
+            { date: "Oct 25", reward: 0, hashpower: 0 },
+            { date: "Oct 26", reward: 0, hashpower: 0 },
+            { date: "Oct 27", reward: 0, hashpower: 0 },
+            { date: "Oct 28", reward: 0, hashpower: 0 },
+            { date: "Oct 29", reward: 0, hashpower: 0 },
+            { date: "Oct 30", reward: 0, hashpower: 0 },
+            { date: "Oct 31", reward: 0, hashpower: 0 },
+            { date: "Nov 01", reward: 0, hashpower: 0 },
+            { date: "Nov 02", reward: 0, hashpower: 0 },
+            { date: "Nov 03", reward: 0, hashpower: 0 },
+            { date: "Nov 04", reward: 0, hashpower: 0 },
+        ];
 
-                    // Close all other FAQ items
-                    faqItems.forEach((otherItem) => {
-                        if (otherItem !== item) {
-                            otherItem.classList.remove("active");
-                        }
-                    });
+        const processRewardsData = () => {
+            const labels = [];
+            const rewardsData = [];
+            const cumulativeData = [];
+            const hashpowerData = [];
+            let cumulativeRewards = 0;
 
-                    // Toggle current item
-                    if (isActive) {
-                        item.classList.remove("active");
-                    } else {
-                        item.classList.add("active");
-                    }
-                });
-            });
+            rewardsHistoryData.forEach((item, index) => {
+                const dayNames = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+                const monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+                let dateLabel = item.date;
 
-            // Add entrance animations
-            const observerOptions = {
-                threshold: 0.1,
-                rootMargin: "0px 0px -50px 0px",
-            };
-
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach((entry) => {
-                    if (entry.isIntersecting) {
-                        entry.target.style.animationDelay = entry.target.dataset.aosDelay || "0ms";
-                        entry.target.style.animationPlayState = "running";
-                    }
-                });
-            }, observerOptions);
-
-            faqItems.forEach((item) => {
-                observer.observe(item);
-            });
-        });
-    </script>
-
-<script>
-document.addEventListener("DOMContentLoaded", function () {
-    const miningRewardsCtx = document.getElementById("miningRewardsChart").getContext("2d");
-    const loading = document.getElementById("chartLoadingMessage");
-
-    loading.style.display = "block";
-
-    const rewardsHistoryData = [
-        { date: "Oct 06", reward: 0, hashpower: 0 },
-        { date: "Oct 07", reward: 0, hashpower: 0 },
-        { date: "Oct 08", reward: 0, hashpower: 0 },
-        { date: "Oct 09", reward: 0, hashpower: 0 },
-        { date: "Oct 10", reward: 0, hashpower: 0 },
-        { date: "Oct 11", reward: 0, hashpower: 0 },
-        { date: "Oct 12", reward: 0, hashpower: 0 },
-        { date: "Oct 13", reward: 0, hashpower: 0 },
-        { date: "Oct 14", reward: 0, hashpower: 0 },
-        { date: "Oct 15", reward: 0, hashpower: 0 },
-        { date: "Oct 16", reward: 0, hashpower: 0 },
-        { date: "Oct 17", reward: 0, hashpower: 0 },
-        { date: "Oct 18", reward: 0, hashpower: 0 },
-        { date: "Oct 19", reward: 0, hashpower: 0 },
-        { date: "Oct 20", reward: 0, hashpower: 0 },
-        { date: "Oct 21", reward: 0, hashpower: 0 },
-        { date: "Oct 22", reward: 0, hashpower: 0 },
-        { date: "Oct 23", reward: 0, hashpower: 0 },
-        { date: "Oct 24", reward: 0, hashpower: 0 },
-        { date: "Oct 25", reward: 0, hashpower: 0 },
-        { date: "Oct 26", reward: 0, hashpower: 0 },
-        { date: "Oct 27", reward: 0, hashpower: 0 },
-        { date: "Oct 28", reward: 0, hashpower: 0 },
-        { date: "Oct 29", reward: 0, hashpower: 0 },
-        { date: "Oct 30", reward: 0, hashpower: 0 },
-        { date: "Oct 31", reward: 0, hashpower: 0 },
-        { date: "Nov 01", reward: 0, hashpower: 0 },
-        { date: "Nov 02", reward: 0, hashpower: 0 },
-        { date: "Nov 03", reward: 0, hashpower: 0 },
-        { date: "Nov 04", reward: 0, hashpower: 0 },
-    ];
-
-    const processRewardsData = () => {
-        const labels = [];
-        const rewardsData = [];
-        const cumulativeData = [];
-        const hashpowerData = [];
-        let cumulativeRewards = 0;
-
-        rewardsHistoryData.forEach((item, index) => {
-            const dayNames = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
-            const monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
-            let dateLabel = item.date;
-
-            if (index === 0) {
-                dateLabel = "Today";
-            } else if (index === rewardsHistoryData.length - 1) {
-                const date = new Date();
-                date.setDate(date.getDate() - 29);
-                const dayName = dayNames[date.getDay()];
-                const dayDate = date.getDate();
-                const monthName = monthNames[date.getMonth()];
-                dateLabel = dayName + " " + dayDate + " " + monthName;
-            }
-
-            labels.push(dateLabel);
-            rewardsData.push(item.reward);
-            cumulativeRewards += item.reward;
-            cumulativeData.push(cumulativeRewards);
-            hashpowerData.push(item.hashpower);
-        });
-
-        return { labels, rewardsData, cumulativeData, hashpowerData };
-    };
-
-    const chartData = processRewardsData();
-
-    // render chart
-    setTimeout(() => {
-        new Chart(miningRewardsCtx, {
-            type: "line",
-            data: {
-                labels: chartData.labels,
-                datasets: [
-                    {
-                        label: "Daily Reward (BIE)",
-                        data: chartData.rewardsData,
-                        borderColor: "rgba(34, 197, 94, 1)",
-                        backgroundColor: "rgba(34, 197, 94, 0.3)",
-                        borderWidth: 2,
-                        tension: 0.3,
-                        fill: true,
-                        yAxisID: 'y',
-                    },
-                    {
-                        label: "Hashpower (H/s)",
-                        data: chartData.hashpowerData,
-                        borderColor: "rgba(59, 130, 246, 1)",
-                        backgroundColor: "rgba(59, 130, 246, 0.3)",
-                        borderWidth: 2,
-                        tension: 0.3,
-                        fill: false,
-                        yAxisID: 'y1',
-                    }
-                ],
-            },
-            options: {
-                responsive: true,
-                interaction: { mode: "index", intersect: false },
-                stacked: false,
-                plugins: {
-                    legend: { display: true, labels: { color: "#22c55e" } },
-                },
-                scales: {
-                    y: {
-                        type: "linear",
-                        display: true,
-                        position: "left",
-                        beginAtZero: true,
-                        grid: { color: "rgba(255,255,255,0.1)" },
-                    },
-                    y1: {
-                        type: "linear",
-                        display: true,
-                        position: "right",
-                        beginAtZero: true,
-                        grid: { drawOnChartArea: false },
-                    },
-                    x: {
-                        ticks: { color: "#ccc" },
-                        grid: { color: "rgba(255,255,255,0.05)" },
-                    }
+                if (index === 0) {
+                    dateLabel = "Today";
+                } else if (index === rewardsHistoryData.length - 1) {
+                    const date = new Date();
+                    date.setDate(date.getDate() - 29);
+                    const dayName = dayNames[date.getDay()];
+                    const dayDate = date.getDate();
+                    const monthName = monthNames[date.getMonth()];
+                    dateLabel = dayName + " " + dayDate + " " + monthName;
                 }
-            },
-        });
 
-        loading.style.display = "none";
-    }, 1000);
-});
-</script>
+                labels.push(dateLabel);
+                rewardsData.push(item.reward);
+                cumulativeRewards += item.reward;
+                cumulativeData.push(cumulativeRewards);
+                hashpowerData.push(item.hashpower);
+            });
+
+            return { labels, rewardsData, cumulativeData, hashpowerData };
+        };
+
+        const chartData = processRewardsData();
+
+        // render chart
+        setTimeout(() => {
+            new Chart(miningRewardsCtx, {
+                type: "line",
+                data: {
+                    labels: chartData.labels,
+                    datasets: [
+                        {
+                            label: "Daily Reward (BIE)",
+                            data: chartData.rewardsData,
+                            borderColor: "rgba(34, 197, 94, 1)",
+                            backgroundColor: "rgba(34, 197, 94, 0.3)",
+                            borderWidth: 2,
+                            tension: 0.3,
+                            fill: true,
+                            yAxisID: 'y',
+                        },
+                        {
+                            label: "Hashpower (H/s)",
+                            data: chartData.hashpowerData,
+                            borderColor: "rgba(59, 130, 246, 1)",
+                            backgroundColor: "rgba(59, 130, 246, 0.3)",
+                            borderWidth: 2,
+                            tension: 0.3,
+                            fill: false,
+                            yAxisID: 'y1',
+                        }
+                    ],
+                },
+                options: {
+                    responsive: true,
+                    interaction: { mode: "index", intersect: false },
+                    stacked: false,
+                    plugins: {
+                        legend: { display: true, labels: { color: "#22c55e" } },
+                    },
+                    scales: {
+                        y: {
+                            type: "linear",
+                            display: true,
+                            position: "left",
+                            beginAtZero: true,
+                            grid: { color: "rgba(255,255,255,0.1)" },
+                        },
+                        y1: {
+                            type: "linear",
+                            display: true,
+                            position: "right",
+                            beginAtZero: true,
+                            grid: { drawOnChartArea: false },
+                        },
+                        x: {
+                            ticks: { color: "#ccc" },
+                            grid: { color: "rgba(255,255,255,0.05)" },
+                        }
+                    }
+                },
+            });
+
+            loading.style.display = "none";
+        }, 1000);
+    });
+    </script>
 
     <!-- Mining Dashboard Scripts -->
     <script>

@@ -26,14 +26,16 @@ class WalletLogin extends Component
         }
 
         // Find or create user by wallet address
-        $user = User::firstOrCreate([
-            'wallet' => $this->wallet,
-            'balance' => 0.00000000,
-            'referral_code' => RandomString::gen(8,RandomString::ALPHA_NUM),
-            'referred_by' => null,
-            'is_admin' => false,
-            'is_banned' => false,
-        ]);
+        $user = User::firstOrCreate(
+            ['wallet' => $this->wallet],
+            [
+                'balance' => 0.00000000,
+                'referral_code' => RandomString::gen(8,RandomString::ALPHA_NUM),
+                'referred_by' => null,
+                'is_admin' => false,
+                'is_banned' => false,
+            ]
+        );
 
         // Log the user in by storing their ID in session
         session([

@@ -9,12 +9,14 @@ class UserController extends Controller
     public function account()
     {
         $user = User::find(session('user'));
+
         $balance = $user->balance;
         $curval = '0.00029';
         $hashrate = '10';
         
         return view('user.account', [
             'user' => $user,
+            'username' => $user->email ?? $user->wallet,
             'balance' => $balance,
             'dailyProfit' => '0.000000',
             'curval' => $curval,
