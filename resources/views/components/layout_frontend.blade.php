@@ -3,10 +3,10 @@
     <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>TronX – Futuristic TRX Cloud Mining Platform</title>
-    <meta name="description" content="TronX Cloud Mining – Mine cryptocurrency effortlessly with instant payouts, secure cloud servers, and high ROI plans. Start your crypto mining journey today!" />
-    <meta name="keywords" content="TronX, TronX Cloud Mining, cryptocurrency mining, Bitcoin mining, Ethereum mining, cloud mining, instant crypto payouts, secure crypto mining, crypto investment, mining plans, passive income crypto, TronX mining platform" />
-    <meta name="author" content="TronX" />
+    <title>{{ $title }}</title>
+    <meta name="description" content="{{ $description }}" />
+    <meta name="keywords" content="{{ $keywords }}" />
+    <meta name="author" content="adimiuprix" />
     <meta name="robots" content="index, follow" />
 
     <!-- Open Graph Meta Tags -->

@@ -3,26 +3,13 @@
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta name="csrf-token" content="YJB04lKZqwZJYELpppdnjo2ZtLzKPWTT0s3yhsPX" />
+        <meta name="theme-color" content="#0b0f1a" />
 
-        <title>TronX - Dashboard</title>
-        <meta name="description" content="TronX Cloud Mining – Mine cryptocurrency effortlessly with instant payouts, secure cloud servers, and high ROI plans. Start your crypto mining journey today!" />
-        <meta name="keywords" content="TronX, TronX Cloud Mining, cryptocurrency mining, Bitcoin mining, Ethereum mining, cloud mining, instant crypto payouts, secure crypto mining, crypto investment, mining plans, passive income crypto, TronX mining platform" />
+        <title>{{ $title }} - Dashboard</title>
+        <meta name="description" content="{{ $description }}" />
+        <meta name="keywords" content="{{ $keywords }}" />
 
         <!--Favicons-->
-        <link rel="apple-touch-icon" sizes="57x57" href="https://tronx.site/assets/favicons/apple-icon-57x57.png" />
-        <link rel="apple-touch-icon" sizes="60x60" href="https://tronx.site/assets/favicons/apple-icon-60x60.png" />
-        <link rel="apple-touch-icon" sizes="72x72" href="https://tronx.site/assets/favicons/apple-icon-72x72.png" />
-        <link rel="apple-touch-icon" sizes="76x76" href="https://tronx.site/assets/favicons/apple-icon-76x76.png" />
-        <link rel="apple-touch-icon" sizes="114x114" href="https://tronx.site/assets/favicons/apple-icon-114x114.png" />
-        <link rel="apple-touch-icon" sizes="120x120" href="https://tronx.site/assets/favicons/apple-icon-120x120.png" />
-        <link rel="apple-touch-icon" sizes="144x144" href="https://tronx.site/assets/favicons/apple-icon-144x144.png" />
-        <link rel="apple-touch-icon" sizes="152x152" href="https://tronx.site/assets/favicons/apple-icon-152x152.png" />
-        <link rel="apple-touch-icon" sizes="180x180" href="https://tronx.site/assets/favicons/apple-icon-180x180.png" />
-        <link rel="icon" type="image/png" sizes="192x192" href="https://tronx.site/assets/favicons/android-icon-192x192.png" />
-        <link rel="icon" type="image/png" sizes="32x32" href="https://tronx.site/assets/favicons/favicon-32x32.png" />
-        <link rel="icon" type="image/png" sizes="96x96" href="https://tronx.site/assets/favicons/favicon-96x96.png" />
-        <link rel="icon" type="image/png" sizes="16x16" href="https://tronx.site/assets/favicons/favicon-16x16.png" />
-        <meta name="theme-color" content="#0b0f1a" />
 
         <!-- Resource hints for better performance -->
         <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
