@@ -21,7 +21,6 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        View::composer('components.layout_frontend', GlobalDataComposer::class);
-        View::composer('components.layout_backend', GlobalDataComposer::class);
+        View::composer('*', GlobalDataComposer::class);
     }
 }

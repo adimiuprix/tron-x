@@ -9,17 +9,6 @@
     <meta name="author" content="adimiuprix" />
     <meta name="robots" content="index, follow" />
 
-    <!-- Open Graph Meta Tags -->
-    <meta property="og:title" content="TronX – Futuristic TRX Cloud Mining" />
-    <meta property="og:description" content="TronX Cloud Mining – Mine cryptocurrency effortlessly with instant payouts, secure cloud servers, and high ROI plans. Start your crypto mining journey today!" />
-    <meta property="og:type" content="website" />
-    <meta property="og:image" content="assets/images/og-image.html" />
-
-    <!-- Twitter Card Meta Tags -->
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="TronX – Futuristic TRX Cloud Mining" />
-    <meta name="twitter:description" content="TronX Cloud Mining – Mine cryptocurrency effortlessly with instant payouts, secure cloud servers, and high ROI plans. Start your crypto mining journey today!" />
-
     <!-- Favicon -->
     <link rel="icon" type="image/png" sizes="32x32" href="assets/favicons/favicon-32x32.png" />
     <link rel="icon" type="image/png" sizes="16x16" href="assets/favicons/favicon-16x16.png" />
@@ -59,7 +48,7 @@
                     <div class="brand-icon">
                         <img src="https://cdn3d.iconscout.com/3d/premium/thumb/tron-coin-trx-3d-icon-png-download-5326811.png" alt="TronX" style="width: 100%; height: 100%; object-fit: contain;" />
                     </div>
-                    <span>TronX</span>
+                    <span> {{ $sitename }}</span>
                 </a>
 
                 <!-- Mobile Menu Toggle -->

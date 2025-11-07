@@ -3,19 +3,25 @@
 namespace App\Http\Controllers;
 
 use Illuminate\View\View;
+use App\Models\MetaPage;
+use App\Models\Setting;
 
 class GlobalDataComposer
 {
     public function compose(View $view)
     {
+        $metas = MetaPage::first();
+        $setting = Setting::all()->pluck('value', 'key')->toArray();
+
         $view->with([
-            'title' => 'TronX – Futuristic TRX Cloud Mining Platform',
-            'description' => 'TronX Cloud Mining – Mine cryptocurrency effortlessly with instant payouts, secure cloud servers, and high ROI plans. Start your crypto mining journey today!',
-            'keywords' => 'TronX, TronX Cloud Mining, cryptocurrency mining, Bitcoin mining, Ethereum mining, cloud mining, instant crypto payouts, secure crypto mining, crypto investment, mining plans, passive income crypto, TronX mining platform',
-            'currency' => 'USD',
-            'currency_symbol' => '$',
-            'sitename' => 'TronX',
-            'cryptocurrency' => 'TRX',
+            'title' => $metas->title,
+            'description' => $metas->description,
+            'keywords' => $metas->keywords,
+            'sitename' => $setting['site_name'] ?? '???',
+            'fiat_curr' => $setting['fiat_curr'] ?? '???',
+            'fiat_symbol' => $setting['fiat_symbol'] ?? '???',
+            'crypto_name' => $setting['crypto_name'] ?? '???',
+            'crypto_code' => $setting['crypto_code'] ?? '???',
         ]);
     }
 }

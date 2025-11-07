@@ -134,7 +134,7 @@
                     <i class="fas fa-wallet"></i>
                 </div>
                 <div class="stat-content">
-                    <div class="stat-number">{{ $tot_deposit }}</div>
+                    <div class="stat-number">{{ $tot_deposit }} {{ $crypto_code }}</div>
                     <div class="stat-label">TRX Deposited</div>
                 </div>
             </div>
@@ -143,7 +143,7 @@
                     <i class="fas fa-coins"></i>
                 </div>
                 <div class="stat-content">
-                    <div class="stat-number">{{ $tot_withdraw }}</div>
+                    <div class="stat-number">{{ $tot_withdraw }} {{ $crypto_code }}</div>
                     <div class="stat-label">TRX Withdrawn</div>
                 </div>
             </div>
