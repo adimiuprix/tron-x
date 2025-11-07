@@ -1,5 +1,5 @@
 <div>
-    <div class="modal fade" wire:ignore.self="" id="withdrawalModal" tabindex="-1" aria-labelledby="withdrawalModal" aria-hidden="true">
+    <div class="modal fade" wire:ignore.self id="withdrawalModal" tabindex="-1" aria-labelledby="withdrawalModal" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content withdrawal-modal-content">
                 <div class="modal-header withdrawal-modal-header">
@@ -30,7 +30,7 @@
                                 <span class="input-group-text">TRX</span>
                             </div>
                         </div>
-                        <small class="form-text"> <strong>Available:</strong> 0.00000000 TRX | <strong>Min:</strong> 0.00100000 TRX </small>
+                        <small class="form-text"> <strong>Available:</strong> 0.00000000 TRX | <strong>Min:</strong> {{ $minwd }} TRX </small>
                     </div>
     
                     <!-- Fee Calculation -->

@@ -59,8 +59,7 @@
         <a
             class="btn logout-btn w-100"
             style="margin-top: 8px; background: rgba(239, 68, 68, 0.1); border: 1px solid rgba(239, 68, 68, 0.3); color: #ef4444;"
-            href="https://tronx.site/logout"
-            onclick="event.preventDefault(); document.getElementById('logout-form').submit();"
+            href="{{ route('logout') }}"
         >
             <i class="fas fa-sign-out-alt"></i> Logout
         </a>

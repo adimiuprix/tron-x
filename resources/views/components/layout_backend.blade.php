@@ -3865,12 +3865,6 @@
                 <!-- Livewire Withdraw -->
                 <livewire:withdraw-modal />
 
-                <!-- Livewire Component wire-end:MdQ65ADLAGWWZ7uMIplQ -->
-                <!-- Logout Form -->
-                <form id="logout-form" action="https://tronx.site/logout" method="POST" style="display: none;">
-                    <input type="hidden" name="_token" value="YJB04lKZqwZJYELpppdnjo2ZtLzKPWTT0s3yhsPX" />
-                </form>
-
                 <!-- Tos Modal -->
                 <div class="modal fade" id="tosModal" tabindex="-1" aria-labelledby="tosModal" aria-hidden="true">
                     <div class="modal-dialog modal-lg">
