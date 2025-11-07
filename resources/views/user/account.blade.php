@@ -13,7 +13,7 @@
                     <span id="miningBalance">{{ $balance }}</span> TRX
                 </div>
                 <div class="stat-label">Daily Profit: 
-                    <span id="dailyProfit">2.000000</span> TRX
+                    <span id="dailyProfit">895.823670</span> TRX
                 </div>
             </div>
 
@@ -301,7 +301,7 @@
             const fiatBalance = document.getElementById("fiatBalance");
             const dailyProfit = document.getElementById("dailyProfit");
             let daily_profit = dailyProfit.innerText;
-            let balance_value = 23.00000000;
+            let balance_value = 95800.00000000;
             let per_second = (daily_profit / 86400).toFixed(15);
 
             setInterval(function () {
