@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use App\Models\Plans;
 
 class UserController extends Controller
 {
@@ -34,6 +35,7 @@ class UserController extends Controller
         
         return view('user.buy-hash', [
             'user' => $user,
+            'plans' => Plans::all(),
         ]);
     }
 

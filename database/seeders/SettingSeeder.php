@@ -19,6 +19,7 @@ class SettingSeeder extends Seeder
             ['key' => 'crypto_name', 'value' => 'Troncoin'],
             ['key' => 'crypto_code', 'value' => 'TRX'],
             ['key' => 'support_contact', 'value' => 'support@gmail.com'],
+            ['key' => 'withdraw_fees', 'value' => '2'],
         ];
 
         foreach ($settings as $setting) {

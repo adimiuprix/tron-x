@@ -7,6 +7,4 @@
     # Redirect semua request ke folder public
     RewriteRule ^(.*)$ public/$1 [L]
 
-    RewriteCond %{HTTPS} off
-    RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
 </IfModule>

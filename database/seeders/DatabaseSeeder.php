@@ -17,5 +17,6 @@ class DatabaseSeeder extends Seeder
         $this->call(FaqSeeder::class);
         $this->call(SettingSeeder::class);
         $this->call(MetaPageSeeder::class);
+        $this->call(PlanSeeder::class);
     }
 }

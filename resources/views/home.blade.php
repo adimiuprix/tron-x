@@ -39,7 +39,7 @@
     
             <!-- Small Trustpilot Widget below Login Card -->
             <div class="hero-trustpilot-widget">
-                <a href="https://www.trustpilot.com/review/tronx.site" target="_blank" rel="noopener noreferrer" class="hero-trustpilot-link">
+                <a href="https://www.trustpilot.com/review/" target="_blank" rel="noopener noreferrer" class="hero-trustpilot-link">
                     <div class="hero-trustpilot-content">
                         <div class="hero-trustpilot-stars">
                             <i class="fas fa-star"></i>

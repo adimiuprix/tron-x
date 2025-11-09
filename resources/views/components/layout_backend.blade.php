@@ -18,7 +18,7 @@
 
         <!-- Preload critical CSS files -->
         <link rel="stylesheet" href="{{ asset('assets/css/argon-dashboard.css') }}" as="style" onload="this.onload=null;this.rel='stylesheet'" />
-        <link rel="stylesheet" href="{{ asset('assets/js/plugins/@fortawesome/fontawesome-free/css/all.min.css') }}" as="style" onload="this.onload=null;this.rel='stylesheet'" />
+        <link rel="stylesheet" href="{{ asset('assets/js/plugins/@fontawesome/fontawesome-free/css/all.min.css') }}" as="style" onload="this.onload=null;this.rel='stylesheet'" />
         <link rel="stylesheet" href="{{ asset('assets/js/plugins/nucleo/css/nucleo.css') }}" as="style" onload="this.onload=null;this.rel='stylesheet'" />
 
         <!-- Fonts (match homepage TRON theme) -->
@@ -4223,15 +4223,15 @@
         @livewireScripts
 
         <!-- Core -->
-        <script src="https://tronx.site/assets/themes/dashboard/default/js/plugins/jquery/dist/jquery.min.js"></script>
-        <script src="https://tronx.site/assets/themes/dashboard/default/js/plugins/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+        <script src="{{ asset('assets/js/plugins/jquery/dist/jquery.min.js') }}"></script>
+        <script src="{{ asset('assets/js/plugins/bootstrap/dist/js/bootstrap.bundle.min.js') }}"></script>
 
         <!-- hCaptcha -->
         <script src="https://js.hcaptcha.com/1/api.js" async="" defer=""></script>
 
         <!-- Argon JS (kept for components like cards, charts) -->
-        <script src="https://tronx.site/assets/themes/dashboard/default/js/argon-dashboard.js"></script>
-        <script src="https://tronx.site/assets/themes/dashboard/default/js/custom.js"></script>
+        <script src="{{ asset('js/argon-dashboard.js') }}"></script>
+        <script src="{{ asset('js/custom.js') }}"></script>
 
         <!-- Chart.js -->
         <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
