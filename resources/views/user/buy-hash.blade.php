@@ -419,22 +419,10 @@
         </div>
     </div>
 
-    <script>
+    <script>        
         // Global State Management
         const AppState = {
-            // Configuration
-            config: {
-                dailyRate: 0.023340000000000,
-                exchangeRate: 1,
-                currencyCode: 'TRX',
-                hashpowerUnit: 'GH',
-                hashpowerPrice: 0.50000000,
-                defaultPeriod: 30,
-                purchaseMin: 1,
-                tierSystemEnabled: true
-            },
-            
-            // Current Purchase Data
+            config: {},
             purchase: {
                 planKey: '',
                 planName: '',
@@ -447,8 +435,6 @@
                 roi: 0,
                 duration: 30
             },
-            
-            // Cryptocurrency Data
             crypto: {
                 rates: {},
                 selected: 'TRX',
@@ -456,74 +442,31 @@
                 lastUpdated: null,
                 supportedCurrencies: []
             },
-            
-            // UI State
             ui: {
                 modalOpen: false,
                 ratesLoading: false,
                 ratesLoaded: false
             },
-            
-            // Plan configurations
-            plans: {
-                "starter": {
-                    "name": "Starter Tier",
-                    "icon": "fa-rocket",
-                    "hashpower_min": 1,
-                    "hashpower_max": 499,
-                    "hashpower_default": 1,
-                    "hashpower_range": "1-499",
-                    "duration": 30,
-                    "daily_profit_rate": 0.02334,
-                    "support_level": "Standard Support",
-                    "features": ["Instant Activation"],
-                    "tier_level": 1,
-                    "tier_color": "success",
-                    "roi_percentage": 140.04
-                },
-                "professional": {
-                    "name": "Professional Tier",
-                    "icon": "fa-crown",
-                    "hashpower_min": 500,
-                    "hashpower_max": 1999,
-                    "hashpower_default": 500,
-                    "hashpower_range": "500-1999",
-                    "duration": 30,
-                    "daily_profit_rate": 0.02567,
-                    "support_level": "Priority Support",
-                    "features": ["Priority Support"],
-                    "featured": true,
-                    "tier_level": 2,
-                    "tier_color": "warning",
-                    "roi_percentage": 154.02
-                },
-                "enterprise": {
-                    "name": "Enterprise Tier",
-                    "icon": "fa-gem",
-                    "hashpower_min": 2000,
-                    "hashpower_max": 10000,
-                    "hashpower_default": 2000,
-                    "hashpower_range": "2000-10000",
-                    "duration": 30,
-                    "daily_profit_rate": 0.029,
-                    "support_level": "VIP Support",
-                    "features": ["VIP Support"],
-                    "tier_level": 3,
-                    "tier_color": "primary",
-                    "roi_percentage": 174
-                }
-            },
-            
-            // Tier configurations
-            tierConfig: {
-                enabled: true,
-                tiers: [
-                    { min: 1, max: 499, rate: 0.02334, name: 'Starter Tier', level: 1, roi: 140.04 },
-                    { min: 500, max: 1999, rate: 0.02567, name: 'Professional Tier', level: 2, roi: 154.02 },
-                    { min: 2000, max: 10000, rate: 0.029, name: 'Enterprise Tier', level: 3, roi: 174 }
-                ]
-            }
+            plans: {},
+            tierConfig: {}
         };
+
+        // Load from backend
+        async function initAppState() {
+            try {
+                const res = await fetch('{{ route('api.app-config') }}');
+                const data = await res.json();
+                AppState.config = data.config;
+                AppState.plans = data.plans;
+                AppState.tierConfig = data.tierConfig;
+
+                console.log('AppState loaded:', AppState);
+            } catch (err) {
+                console.error('Gagal memuat konfigurasi:', err);
+            }
+        }
+
+        initAppState();
 
         // Utility Functions
         const Utils = {
@@ -673,7 +616,7 @@
         const CryptoManager = {
             async loadDatabase() {
                 try {
-                    const response = await fetch('https://tron-x.fun/api/crypto-databases');
+                    const response = await fetch('{{ route('api.crypto-databases') }}');
                     const data = await response.json();
                     AppState.crypto.database = data;
                     console.log('Crypto database loaded:', Object.keys(data).length, 'currencies');
@@ -694,14 +637,8 @@
                 UIManager.showLoadingState();
                 
                 try {
-                    const response = await fetch('https://tron-x.fun/api/crypto-rates', {
-                        method: 'GET',
-                        headers: {
-                            'Accept': 'application/json',
-                            'X-Requested-With': 'XMLHttpRequest'
-                        }
-                    });
-                    
+                    const response = await fetch('{{ route('api.crypto-rates') }}');
+
                     if (!response.ok) {
                         throw new Error(`HTTP error! status: ${response.status}`);
                     }
