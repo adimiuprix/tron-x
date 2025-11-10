@@ -13,7 +13,7 @@
                     <span id="miningBalance">{{ $balance }}</span> TRX
                 </div>
                 <div class="stat-label">Daily Profit: 
-                    <span id="dailyProfit">895.823670</span> TRX
+                    <span id="dailyProfit">0.823670</span> TRX
                 </div>
             </div>
 
@@ -226,7 +226,7 @@
                         <span>Mining Rewards History (Last 30 Days)</span>
                     </div>
                     <div class="mining-rewards-actions">
-                        <a href="https://tronx.site/mining-metrics" class="btn btn-sm btn-outline-primary">
+                        <a href="/mining-metrics" class="btn btn-sm btn-outline-primary">
                             <i class="fa fa-chart-line"></i>
                             View Full Metrics
                         </a>
@@ -296,12 +296,12 @@
     <!-- Mining Dashboard Scripts -->
     <script>
         document.addEventListener("DOMContentLoaded", function (e) {
-            let currentRate = 0.281107;
+            let currentRate = 0.29;
             let balance = document.getElementById("miningBalance");
             const fiatBalance = document.getElementById("fiatBalance");
             const dailyProfit = document.getElementById("dailyProfit");
             let daily_profit = dailyProfit.innerText;
-            let balance_value = 95800.00000000;
+            let balance_value = {{ $balance }};
             let per_second = (daily_profit / 86400).toFixed(15);
 
             setInterval(function () {
@@ -314,8 +314,8 @@
             initializeDailyBonus();
 
             // User hashpower and daily profit rate for calculations
-            const userHashpower = 0;
-            const dailyProfitRate = 0.02334;
+            const userHashpower = {{ $hashrate }};
+            const dailyProfitRate = 0.00000;
 
             // 30-Day Mining Rewards Chart
             const miningRewardsCtx = document.getElementById("miningRewardsChart").getContext("2d");

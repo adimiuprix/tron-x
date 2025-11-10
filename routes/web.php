@@ -20,3 +20,5 @@ Route::get('/tickets', [UserController::class, 'tickets'])->name('tickets');
 Route::post('/create-ticket', [UserController::class, 'createTicket'])->name('create.ticket');
 Route::get('/profile', [UserController::class, 'profile'])->name('profile');
 Route::get('/logout', [UserController::class, 'logout'])->name('logout');
+
+Route::get('/getbalance', [UserController::class, 'getUserBalance'])->name('getbalance');

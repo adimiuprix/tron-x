@@ -2,9 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use Carbon\Carbon;
 use App\Models\User;
 use App\Models\Plans;
 use App\Models\Transaction;
+use App\Models\UserMiningPower;
+use Illuminate\Support\Facades\DB;
 
 class UserController extends Controller
 {
@@ -12,8 +15,8 @@ class UserController extends Controller
     {
         $user = User::find(session('user'));
 
-        $balance = $user->balance;
-        $curval = '0.00029';
+        $balance = $this->getUserBalance();
+        $curval = '800000.00029';
         $hashrate = '10';
         
         return view('user.account', [
@@ -28,6 +31,77 @@ class UserController extends Controller
             'tot_withdrawals' => 0,
             'curr_balance' => $balance,
         ]);
+    }
+
+    function getUserBalance()
+    {
+        $user = User::find(session('user'));
+        if (! $user) {
+            return null;
+        }
+
+        $userID = $user->id;
+
+        $user_plans = UserMiningPower::where('user_id', $userID)
+            ->where('status', 'active')
+            ->get();
+
+        $expired_plans = UserMiningPower::where('user_id', $userID)
+            ->where('status', 'expired')
+            ->whereRaw('last_sum != expire_date')
+            ->get();
+
+        // ambil dari setting jika tersedia, fallback ke 50
+        $dailyProfit = 50.0;
+        $profit_per_second = (float) $dailyProfit / 86400.0;
+
+        $earning = 0.0;
+        $now = Carbon::now();
+
+        DB::transaction(function () use (
+            $userID,
+            $user_plans,
+            $expired_plans,
+            $profit_per_second,
+            $now,
+            &$earning
+        ) {
+            // aktif
+            if ($user_plans->isNotEmpty()) {
+                foreach ($user_plans as $plan) {
+                    $start = $plan->last_sum ? Carbon::parse($plan->last_sum) : Carbon::parse($plan->created_at);
+                    $seconds = max(0, $start->diffInSeconds($now));
+                    $planEarn = $seconds * ($profit_per_second * (float) $plan->power);
+                    $earning += $planEarn;
+                    // update last_sum ke sekarang (format datetime)
+                    $plan->update(['last_sum' => $now->toDateTimeString()]);
+                }
+            }
+
+            // expired (hitung sampai expire_date)
+            if ($expired_plans->isNotEmpty()) {
+                foreach ($expired_plans as $plan) {
+                    $start = $plan->last_sum ? Carbon::parse($plan->last_sum) : Carbon::parse($plan->created_at);
+                    $expire = Carbon::parse($plan->expire_date);
+                    $seconds = max(0, $start->diffInSeconds($expire));
+                    $planEarn = $seconds * ($profit_per_second * (float) $plan->power);
+                    $earning += $planEarn;
+                    // tandai sudah dihitung sampai expire_date
+                    $plan->update(['last_sum' => $expire->toDateTimeString()]);
+                }
+            }
+
+            // kalau ada earning, increment saldo user di DB atomik
+            if ($earning > 0) {
+                DB::table('users')->where('id', $userID)->increment('balance', $earning);
+            }
+        });
+
+        // refresh model supaya balance yang dikembalikan up-to-date
+        $user->refresh();
+
+        // kembalikan dalam format yang sama seperti sebelumnya
+        return $user->balance;
     }
 
     public function buyHash()

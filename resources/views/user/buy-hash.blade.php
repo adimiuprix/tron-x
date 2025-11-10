@@ -520,7 +520,7 @@
             
             getTierInfo(hashpower) {
                 if (!AppState.config.tierSystemEnabled) {
-                    return { name: 'Standard Plan', level: 0, roi: 0 };
+                    return { name: '', level: 0, roi: 0 };
                 }
                 
                 const tier = AppState.tierConfig.tiers.find(t => 
@@ -531,7 +531,7 @@
                     name: tier.name, 
                     level: tier.level,
                     roi: tier.roi 
-                } : { name: 'Standard Plan', level: 0, roi: 0 };
+                } : { name: '', level: 0, roi: 0 };
             },
             
             calculateProfits(hashpower, duration = 30) {

@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('hash_invoice')->unique();
             $table->unsignedBigInteger('user_id');
             $table->decimal('transaction_amount', 15, 8);
-            $table->string('hashpower');
+            $table->decimal('hashpower', 15, 2);
             $table->string('payment_method');
             $table->string('selected_crypto')->nullable();
             $table->decimal('crypto_amount', 15, 8)->nullable();
