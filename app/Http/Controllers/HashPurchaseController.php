@@ -42,23 +42,22 @@ class HashPurchaseController extends Controller
         // Ambil plan id dari plan key yang diterima
         $plan = Plans::where('name', $invoice['plan_key'])->select('id')->firstOrFail();
 
+        $hash_invoice = 'HP' . time(); // pembuatan invoice unik
+
         // Simpan ke tabel transaksi
         Transaction::create([
             'plan_id' => $plan->id,
-            'hash_invoice' => 'HP' . time(),    // pembuatan invoice unik
+            'hash_invoice' => $hash_invoice,
             'user_id' => $user,
             'transaction_amount' => $invoice['amount'], // based on selected package
             'hashpower' => $invoice['hashpower'],
             'payment_method' => $invoice['payment_method'], // e.g., 'crypto'
             'selected_crypto' => $invoice['selected_crypto'] ?? null, // e.g., 'BTC'
             'crypto_amount' => $invoice['crypto_amount'] ?? null,
+            'payment_address' => null, // to be filled after payment gateway integration
             'status' => 'pending',
         ]);
 
-        return response()->json([
-            'success' => true,
-            'message' => 'Hashpower purchase created successfully',
-            'data' => ''
-        ]);
+        return redirect()->route('purchase', ['hash' => $hash_invoice]);
     }
 }

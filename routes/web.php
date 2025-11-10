@@ -8,7 +8,7 @@ Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/payment-proofs', [HomeController::class, 'paymentProofs'])->name('payment.proofs');
 Route::get('/account', [UserController::class, 'account'])->name('account');
 Route::get('/buy-hash', [UserController::class, 'buyHash'])->name('buy.hash');
-Route::get('/purchase', [UserController::class, 'purchase'])->name('purchase');
+Route::get('/purchase/{hash}', [UserController::class, 'purchase'])->name('purchase');
 Route::get('/mining-metrics', [UserController::class, 'miningMetrics'])->name('mining.metrics');
 Route::get('/my-history', [UserController::class, 'history'])->name('my.history');
 Route::get('/my-deposits', [UserController::class, 'deposits'])->name('my.deposits');

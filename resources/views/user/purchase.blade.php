@@ -515,7 +515,7 @@
                                     </div>
                                     <div class="payment-title">
                                         <h3>TRX Payment</h3>
-                                        <p>Invoice #05O1TlIaL8NSSVJM</p>
+                                        <p>Invoice #{{ $tx->hash_invoice }}</p>
                                     </div>
                                 </div>
 
@@ -529,8 +529,8 @@
                                                 <span>Amount to Pay</span>
                                             </div>
                                             <div class="amount-display">
-                                                <div class="amount-value">31.500000000000000</div>
-                                                <div class="amount-currency">TRX</div>
+                                                <div class="amount-value">{{ $tx->crypto_amount }}</div>
+                                                <div class="amount-currency">{{ $tx->selected_crypto }}</div>
                                             </div>
                                         </div>
 
@@ -542,7 +542,7 @@
                                             </div>
                                             <div class="address-container">
                                                 <div class="address-input">
-                                                    <input type="text" id="paymentAddress" value="TBxSn6tKPHGxzpUoejmPdBptzVMm9cQy1t" readonly="" />
+                                                    <input type="text" id="paymentAddress" value="{{ $tx->payment_address }}" readonly />
                                                     <button class="copy-btn" onclick="copyAddress()" title="Copy Address">
                                                         <i class="fa fa-copy"></i>
                                                     </button>
@@ -595,7 +595,7 @@
                                     </div>
                                     <div class="notice-content">
                                         <h4>Payment Instructions</h4>
-                                        <p>Please send exactly <strong>31.500000000000000 TRX</strong> to the payment address above. Sending any other amount may result in delayed or failed processing.</p>
+                                        <p>Please send exactly <strong>{{ $tx->crypto_amount }} {{ $tx->selected_crypto }}</strong> to the payment address above. Sending any other amount may result in delayed or failed processing.</p>
                                     </div>
                                 </div>
                             </div>
@@ -626,7 +626,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="calc-body" style="padding-top: 0;">
+                    <div class="calc-body">
                         <p class="muted">If you've already sent the payment, please wait a few minutes while our system detects it automatically. This can take from <strong>1 minute to 1 hour</strong> depending on network confirmations.</p>
                     </div>
                 </div>

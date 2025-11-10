@@ -16,10 +16,12 @@ return new class extends Migration
             $table->unsignedBigInteger('plan_id');
             $table->string('hash_invoice')->unique();
             $table->unsignedBigInteger('user_id');
-            $table->string('hashpower');
             $table->decimal('transaction_amount', 15, 8);
+            $table->string('hashpower');
             $table->string('payment_method');
             $table->string('selected_crypto')->nullable();
+            $table->decimal('crypto_amount', 15, 8)->nullable();
+            $table->string('payment_address')->nullable();
             $table->string('status');
             $table->timestamps();
         });

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use App\Models\Plans;
+use App\Models\Transaction;
 
 class UserController extends Controller
 {
@@ -54,12 +55,15 @@ class UserController extends Controller
         ]);
     }
 
-    public function purchase()
+    public function purchase($hash)
     {
         $user = User::find(session('user'));
+
+        $transaction = Transaction::where('hash_invoice', $hash)->firstOrFail();
         
         return view('user.purchase', [
             'user' => $user,
+            'tx' => $transaction,
         ]);
     }
 

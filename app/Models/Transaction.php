@@ -10,10 +10,12 @@ class Transaction extends Model
         'plan_id',
         'hash_invoice',
         'user_id',
-        'hashpower',
         'transaction_amount',
+        'hashpower',
         'payment_method',
         'selected_crypto',
+        'crypto_amount',
+        'payment_address',
         'status',
     ];
 }
