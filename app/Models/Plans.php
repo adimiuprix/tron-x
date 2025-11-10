@@ -9,9 +9,14 @@ class Plans extends Model
     protected $table = 'plans';
     protected $fillable = [
         'name',
+        'tier_label',
+        'tier_icon',
+        'image',
         'price',
         'duration',
-        'features',
+        'roi_percentage',
+        'min_hashpower',
+        'max_hashpower',
         'is_active',
     ];
 }

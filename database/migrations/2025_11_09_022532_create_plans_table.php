@@ -17,8 +17,6 @@ return new class extends Migration
             $table->string('tier_label')->nullable();
             $table->string('tier_icon')->nullable();
             $table->string('image')->nullable();
-            $table->decimal('price', 12, 3)->default(0.000);
-            $table->integer('duration');
             $table->decimal('roi_percentage', 5, 1)->default(0.0);
             $table->integer('min_hashpower')->default(1);
             $table->integer('max_hashpower')->default(499);

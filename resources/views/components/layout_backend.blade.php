@@ -5,9 +5,11 @@
         <meta name="csrf-token" content="YJB04lKZqwZJYELpppdnjo2ZtLzKPWTT0s3yhsPX" />
         <meta name="theme-color" content="#0b0f1a" />
 
-        <title>{{ $title }} - Dashboard</title>
         <meta name="description" content="{{ $description }}" />
         <meta name="keywords" content="{{ $keywords }}" />
+
+
+        <title>{{ $title }} - Dashboard</title>
 
         <!--Favicons-->
 
@@ -4230,8 +4232,8 @@
         <script src="https://js.hcaptcha.com/1/api.js" async="" defer=""></script>
 
         <!-- Argon JS (kept for components like cards, charts) -->
-        <script src="{{ asset('js/argon-dashboard.js') }}"></script>
-        <script src="{{ asset('js/custom.js') }}"></script>
+        <script src="{{ asset('assets/js/argon-dashboard.js') }}"></script>
+        <script src="{{ asset('assets/js/custom.js') }}"></script>
 
         <!-- Chart.js -->
         <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>

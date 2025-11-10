@@ -33,9 +33,24 @@ class UserController extends Controller
     {
         $user = User::find(session('user'));
         
+        // Ambil semua plans yang aktif
+        $plans = Plans::where('is_active', true)->get();
+        
+        // Kelompokkan plans berdasarkan tier untuk kemudahan akses di blade
+        $groupedPlans = [
+            'starter' => $plans->where('tier_label', 'Starter')->first(),
+            'professional' => $plans->where('tier_label', 'Professional')->first(),
+            'enterprise' => $plans->where('tier_label', 'Enterprise')->first(),
+        ];
+        
+        // Hitung base rate dari ROI percentage (asumsi per hari)
+        $baseRate = 0.00029; // Default rate jika tidak ada data
+        
         return view('user.buy-hash', [
             'user' => $user,
-            'plans' => Plans::all(),
+            'plans' => $plans,
+            'groupedPlans' => $groupedPlans,
+            'baseRate' => $baseRate,
         ]);
     }
 

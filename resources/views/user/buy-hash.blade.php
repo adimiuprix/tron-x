@@ -42,9 +42,7 @@
                                     src="https://ucarecdn.com/d298d590-9ab6-41b3-bc68-81b510264a2e/starterplan.png"
                                     alt="Starter Plan"
                                     class="plan-image"
-                                    onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
                                 />
-                                <i class="fa fa-rocket"></i>
                             </div>
                             <div class="plan-title">Starter Tier</div>
                             <div class="plan-subtitle">Perfect for beginners</div>
@@ -101,10 +99,9 @@
                             </div>
                         </div>
 
-                        <form action="https://tronx.site/buy-hash" method="POST" class="purchase-form">
-                            <input type="hidden" name="hashpower" id="hidden_hashpower_starter" value="1" />
-                            <input type="hidden" name="payment_method" id="hidden_payment_method_starter" value="faucetpay" />
-                            <button type="button" class="btn btn-primary btn-block buy-plan-btn" data-plan="starter" data-price="0.5" onclick="openPaymentModal('starter', 0.5, 1)">
+                        <form action="" method="post" class="purchase-form">
+                            <input type="hidden" name="hashpower" id="hidden_hashpower_starter" value="" />
+                            <button type="button" class="btn btn-primary btn-block buy-plan-btn" data-plan="starter" data-price="0.5" data-tier="1">
                                 <i class="fa fa-shopping-cart"></i>
                                 Buy Now
                             </button>
@@ -132,9 +129,7 @@
                                     src="https://ucarecdn.com/55d6a78d-c03d-4a5b-a119-bc65b763d3e6/professionalplan.png"
                                     alt="Professional Plan"
                                     class="plan-image"
-                                    onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
                                 />
-                                <i class="fa fa-crown" style="display: none;"></i>
                             </div>
                             <div class="plan-title">Professional Tier</div>
                             <div class="plan-subtitle">Best value for money</div>
@@ -191,10 +186,9 @@
                             </div>
                         </div>
 
-                        <form action="https://tronx.site/buy-hash" method="POST" class="purchase-form">
-                            <input type="hidden" name="hashpower" id="hidden_hashpower_professional" value="500" />
-                            <input type="hidden" name="payment_method" id="hidden_payment_method_professional" value="faucetpay" />
-                            <button type="button" class="btn btn-primary btn-block buy-plan-btn" data-plan="professional" data-price="250" onclick="openPaymentModal('professional', 250, 500)">
+                        <form action="" method="POST" class="purchase-form">
+                            <input type="hidden" name="hashpower" id="hidden_hashpower_professional" value="" />
+                            <button type="button" class="btn btn-primary btn-block buy-plan-btn" data-plan="professional" data-price="250" data-tier="2">
                                 <i class="fa fa-shopping-cart"></i>
                                 Buy Now
                             </button>
@@ -221,9 +215,7 @@
                                     src="https://ucarecdn.com/895bf228-856c-480f-9d1a-149fd71bea71/enterpriseplan.png"
                                     alt="Enterprise Plan"
                                     class="plan-image"
-                                    onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
                                 />
-                                <i class="fa fa-gem" style="display: none;"></i>
                             </div>
                             <div class="plan-title">Enterprise Tier</div>
                             <div class="plan-subtitle">For serious miners</div>
@@ -280,10 +272,9 @@
                             </div>
                         </div>
 
-                        <form action="https://tronx.site/buy-hash" method="POST" class="purchase-form">
-                            <input type="hidden" name="hashpower" id="hidden_hashpower_enterprise" value="2000" />
-                            <input type="hidden" name="payment_method" id="hidden_payment_method_enterprise" value="faucetpay" />
-                            <button type="button" class="btn btn-primary btn-block buy-plan-btn" data-plan="enterprise" data-price="1000" onclick="openPaymentModal('enterprise', 1000, 2000)">
+                        <form action="" method="POST" class="purchase-form">
+                            <input type="hidden" name="hashpower" id="hidden_hashpower_enterprise" value="" />
+                            <button type="button" class="btn btn-primary btn-block buy-plan-btn" data-plan="enterprise" data-price="1000" data-tier="3">
                                 <i class="fa fa-shopping-cart"></i>
                                 Buy Now
                             </button>
@@ -327,150 +318,46 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="paymentModalLabel">
-                        <i class="fa fa-credit-card"></i>
-                        Choose Payment Method
+                        <i class="fa fa-wallet"></i>
+                        Choose Cryptocurrency
                     </h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">×</span>
                     </button>
                 </div>
                 <div class="modal-body">
-                    <div class="payment-method-selection">
-                        <label class="form-label">
-                            <i class="fa fa-credit-card"></i>
-                            Select Payment Method
-                        </label>
-                        <div class="payment-method-options">
-
-                            {{-- FaucetPay Option --}}
-                            <div class="payment-method-option">
-                                <input type="radio" id="modal_payment_faucetpay" name="modal_payment_method" value="faucetpay" class="payment-method-radio" checked />
-                                <label for="modal_payment_faucetpay" class="payment-method-label">
-                                    <div class="payment-method-icon">
-                                        <i class="fa fa-coins"></i>
-                                    </div>
-                                    <div class="payment-method-info">
-                                        <div class="payment-method-name">FaucetPay</div>
-                                        <div class="payment-method-desc">Pay with any FaucetPay account</div>
-                                    </div>
-                                </label>
-                            </div>
-
-                            {{-- Onchain Payment Option --}}
-                            <div class="payment-method-option" style="opacity: 1; cursor: pointer;">
-                                <input type="radio" id="modal_payment_nowpayments" name="modal_payment_method" value="nowpayments" class="payment-method-radio" />
-                                <label for="modal_payment_nowpayments" class="payment-method-label">
-                                    <div class="payment-method-icon">
-                                        <i class="fa fa-wallet"></i>
-                                    </div>
-                                    <div class="payment-method-info">
-                                        <div class="payment-method-name">Direct Wallet</div>
-                                        <div class="payment-method-desc">Pay with cryptocurrency</div>
-                                    </div>
-                                </label>
-                            </div>
-
-                        </div>
+                    
+                    <!-- Loading State -->
+                    <div id="loadingState" class="text-center py-4" style="display: none;">
+                        <i class="fa fa-spinner fa-spin fa-3x mb-3"></i>
+                        <p>Loading cryptocurrency rates...</p>
                     </div>
 
-                    <!-- Purchase Summary for FaucetPay -->
-                    <div class="purchase-summary mb-4" id="faucetpayPurchaseSummary">
-                        <h6><i class="fa fa-shopping-cart"></i> Purchase Summary</h6>
-                        <div class="summary-details">
-                            <div class="detail-item">
-                                <span>Plan:</span>
-                                <span id="modalPlanNameFaucetpay">Starter Tier</span>
-                            </div>
-                            <div class="detail-item">
-                                <span>Hashpower:</span>
-                                <span id="modalHashpowerFaucetpay">1 GH/s</span>
-                            </div>
-                            <div class="detail-item">
-                                <span>Amount:</span>
-                                <span id="modalAmountFaucetpay">0.50000000 TRX</span>
-                            </div>
-                        </div>
+                    <!-- Error State -->
+                    <div id="errorState" class="alert alert-danger" style="display: none;">
+                        <i class="fa fa-exclamation-triangle"></i>
+                        <span id="errorMessage">Unable to load rates</span>
                     </div>
-
-                    <!-- Cryptocurrency Selection (shown when Direct Wallet is selected) -->
-                    <div class="cryptocurrency-selection" id="cryptoSelection" style="display: none;">
+                    
+                    <!-- Cryptocurrency Selection -->
+                    <div class="cryptocurrency-selection" id="cryptoSelection">
                         <label class="form-label">
                             <i class="fa fa-coins"></i>
                             Select Cryptocurrency
                         </label>
                         <div class="crypto-grid" id="cryptoGrid" style="display: grid;">
-                            <div class="crypto-option" data-crypto="TRX">
-                                <input type="radio" id="crypto_trx" name="selected_crypto" value="TRX" class="crypto-radio" checked />
-                                <label for="crypto_trx" class="crypto-label">
-                                    <div class="crypto-icon">
-                                        <img src="https://assets.coingecko.com/coins/images/1094/large/tron-logo.png" alt="TRON" class="crypto-image" style="opacity: 1;" />
-                                    </div>
-                                    <div class="crypto-info">
-                                        <div class="crypto-name">TRON</div>
-                                        <div class="crypto-symbol">TRX</div>
-                                    </div>
-                                    <div class="crypto-amount" id="trx_amount">0.500000</div>
-                                </label>
-                            </div>
-                            <div class="crypto-option" data-crypto="BTC">
-                                <input type="radio" id="crypto_btc" name="selected_crypto" value="BTC" class="crypto-radio" />
-                                <label for="crypto_btc" class="crypto-label">
-                                    <div class="crypto-icon">
-                                        <img src="https://assets.coingecko.com/coins/images/1/large/bitcoin.png" alt="Bitcoin" class="crypto-image" style="opacity: 1;" />
-                                    </div>
-                                    <div class="crypto-info">
-                                        <div class="crypto-name">Bitcoin</div>
-                                        <div class="crypto-symbol">BTC</div>
-                                    </div>
-                                    <div class="crypto-amount" id="btc_amount">0.00000135</div>
-                                </label>
-                            </div>
-                            <div class="crypto-option" data-crypto="ETH">
-                                <input type="radio" id="crypto_eth" name="selected_crypto" value="ETH" class="crypto-radio" />
-                                <label for="crypto_eth" class="crypto-label">
-                                    <div class="crypto-icon">
-                                        <img src="https://assets.coingecko.com/coins/images/279/large/ethereum.png" alt="Ethereum" class="crypto-image" style="opacity: 1;" />
-                                    </div>
-                                    <div class="crypto-info">
-                                        <div class="crypto-name">Ethereum</div>
-                                        <div class="crypto-symbol">ETH</div>
-                                    </div>
-                                    <div class="crypto-amount" id="eth_amount">0.00003994</div>
-                                </label>
-                            </div>
-                            <div class="crypto-option" data-crypto="LTC">
-                                <input type="radio" id="crypto_ltc" name="selected_crypto" value="LTC" class="crypto-radio" />
-                                <label for="crypto_ltc" class="crypto-label">
-                                    <div class="crypto-icon">
-                                        <img src="https://assets.coingecko.com/coins/images/2/large/litecoin.png" alt="Litecoin" class="crypto-image" style="opacity: 1;" />
-                                    </div>
-                                    <div class="crypto-info">
-                                        <div class="crypto-name">Litecoin</div>
-                                        <div class="crypto-symbol">LTC</div>
-                                    </div>
-                                    <div class="crypto-amount" id="ltc_amount">0.001625</div>
-                                </label>
-                            </div>
-                            <div class="crypto-option" data-crypto="DOGE">
-                                <input type="radio" id="crypto_doge" name="selected_crypto" value="DOGE" class="crypto-radio" />
-                                <label for="crypto_doge" class="crypto-label">
-                                    <div class="crypto-icon">
-                                        <img src="https://assets.coingecko.com/coins/images/5/large/dogecoin.png" alt="Dogecoin" class="crypto-image" style="opacity: 1;" />
-                                    </div>
-                                    <div class="crypto-info">
-                                        <div class="crypto-name">Dogecoin</div>
-                                        <div class="crypto-symbol">DOGE</div>
-                                    </div>
-                                    <div class="crypto-amount" id="doge_amount">0.862268</div>
-                                </label>
-                            </div>
+                            <!-- Crypto options will be generated here -->
                         </div>
 
                         <div class="crypto-rate-info">
                             <div class="rate-display">
                                 <span class="rate-label">Current Rate:</span>
-                                <span class="rate-value" id="currentRate">1 TRX = $0.28</span>
+                                <span class="rate-value" id="currentRate">Loading...</span>
                             </div>
+                            <small class="text-muted d-block mt-2">
+                                <i class="fa fa-clock"></i>
+                                Last updated: <span id="lastUpdated">-</span>
+                            </small>
                         </div>
 
                         <div class="purchase-summary mb-4">
@@ -481,16 +368,37 @@
                                     <span id="modalPlanName">Starter Tier</span>
                                 </div>
                                 <div class="detail-item">
+                                    <span>Tier:</span>
+                                    <span id="modalTierLevel">Tier 1</span>
+                                </div>
+                                <div class="detail-item">
                                     <span>Hashpower:</span>
                                     <span id="modalHashpower">1 GH/s</span>
                                 </div>
                                 <div class="detail-item">
-                                    <span>Amount:</span>
+                                    <span>Duration:</span>
+                                    <span id="modalDuration">30 Days</span>
+                                </div>
+                                <div class="detail-item">
+                                    <span>Daily Profit:</span>
+                                    <span id="modalDailyProfit">0.023 TRX</span>
+                                </div>
+                                <div class="detail-item">
+                                    <span>Total Return:</span>
+                                    <span id="modalTotalReturn">0.700 TRX</span>
+                                </div>
+                                <div class="detail-item">
+                                    <span>ROI:</span>
+                                    <span id="modalROI">140.0%</span>
+                                </div>
+                                <hr>
+                                <div class="detail-item font-weight-bold">
+                                    <span>Price (TRX):</span>
                                     <span id="modalAmount">0.50000000 TRX</span>
                                 </div>
-                                <div class="detail-item" id="cryptoAmountItem" style="display: flex;">
+                                <div class="detail-item font-weight-bold" id="cryptoAmountItem">
                                     <span>Pay with:</span>
-                                    <span id="modalCryptoAmount">0.500000 TRX</span>
+                                    <span id="modalCryptoAmount">Loading...</span>
                                 </div>
                             </div>
                         </div>
@@ -502,9 +410,9 @@
                         <i class="fa fa-times"></i>
                         Cancel
                     </button>
-                    <button type="button" class="btn btn-primary" id="confirmPurchaseBtn" onclick="confirmPurchase()">
+                    <button type="button" class="btn btn-primary" id="confirmPurchaseBtn" disabled>
                         <i class="fa fa-check"></i>
-                        Confirm Purchase
+                        <span id="confirmBtnText">Confirm Purchase</span>
                     </button>
                 </div>
             </div>
@@ -512,37 +420,697 @@
     </div>
 
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const dailyRate = 0.023340000000000;
-            const exchangeRate = 1;
-            const currencyCode = 'TRX';
-            const hashpowerUnit = 'GH';
-            const hashpowerPrice = 0.50000000;
-            const defaultPeriod = 30;
-            const purchaseMin = 1;
-            const tierSystemEnabled = 'enabled' === 'enabled';
+        // Global State Management
+        const AppState = {
+            // Configuration
+            config: {
+                dailyRate: 0.023340000000000,
+                exchangeRate: 1,
+                currencyCode: 'TRX',
+                hashpowerUnit: 'GH',
+                hashpowerPrice: 0.50000000,
+                defaultPeriod: 30,
+                purchaseMin: 1,
+                tierSystemEnabled: true
+            },
+            
+            // Current Purchase Data
+            purchase: {
+                planKey: '',
+                planName: '',
+                tierLevel: 0,
+                tierRate: 0,
+                hashpower: 0,
+                amount: 0,
+                dailyProfit: 0,
+                totalReturn: 0,
+                roi: 0,
+                duration: 30
+            },
+            
+            // Cryptocurrency Data
+            crypto: {
+                rates: {},
+                selected: 'TRX',
+                database: {},
+                lastUpdated: null,
+                supportedCurrencies: []
+            },
+            
+            // UI State
+            ui: {
+                modalOpen: false,
+                ratesLoading: false,
+                ratesLoaded: false
+            },
+            
+            // Plan configurations
+            plans: {
+                "starter": {
+                    "name": "Starter Tier",
+                    "icon": "fa-rocket",
+                    "hashpower_min": 1,
+                    "hashpower_max": 499,
+                    "hashpower_default": 1,
+                    "hashpower_range": "1-499",
+                    "duration": 30,
+                    "daily_profit_rate": 0.02334,
+                    "support_level": "Standard Support",
+                    "features": ["Instant Activation"],
+                    "tier_level": 1,
+                    "tier_color": "success",
+                    "roi_percentage": 140.04
+                },
+                "professional": {
+                    "name": "Professional Tier",
+                    "icon": "fa-crown",
+                    "hashpower_min": 500,
+                    "hashpower_max": 1999,
+                    "hashpower_default": 500,
+                    "hashpower_range": "500-1999",
+                    "duration": 30,
+                    "daily_profit_rate": 0.02567,
+                    "support_level": "Priority Support",
+                    "features": ["Priority Support"],
+                    "featured": true,
+                    "tier_level": 2,
+                    "tier_color": "warning",
+                    "roi_percentage": 154.02
+                },
+                "enterprise": {
+                    "name": "Enterprise Tier",
+                    "icon": "fa-gem",
+                    "hashpower_min": 2000,
+                    "hashpower_max": 10000,
+                    "hashpower_default": 2000,
+                    "hashpower_range": "2000-10000",
+                    "duration": 30,
+                    "daily_profit_rate": 0.029,
+                    "support_level": "VIP Support",
+                    "features": ["VIP Support"],
+                    "tier_level": 3,
+                    "tier_color": "primary",
+                    "roi_percentage": 174
+                }
+            },
+            
+            // Tier configurations
+            tierConfig: {
+                enabled: true,
+                tiers: [
+                    { min: 1, max: 499, rate: 0.02334, name: 'Starter Tier', level: 1, roi: 140.04 },
+                    { min: 500, max: 1999, rate: 0.02567, name: 'Professional Tier', level: 2, roi: 154.02 },
+                    { min: 2000, max: 10000, rate: 0.029, name: 'Enterprise Tier', level: 3, roi: 174 }
+                ]
+            }
+        };
 
-            // Global variables for modal
-            let currentPlanKey = '';
-            let currentHashpower = 0;
-            let currentAmount = 0;
-            let isCustomPlan = false;
+        // Utility Functions
+        const Utils = {
+            formatNumber(num, decimals = 3) {
+                return parseFloat(num).toFixed(decimals);
+            },
+            
+            formatCrypto(amount, crypto) {
+                const decimals = {
+                    'BTC': 8,
+                    'ETH': 8,
+                    'USDT': 2,
+                    'USDC': 2,
+                    'SHIB': 0,
+                    'TRX': 6,
+                    'DOGE': 6,
+                    'LTC': 6
+                };
+                return this.formatNumber(amount, decimals[crypto] || 6);
+            },
+            
+            getCurrentTimestamp() {
+                return new Date().toLocaleString('en-US', {
+                    year: 'numeric',
+                    month: 'short',
+                    day: 'numeric',
+                    hour: '2-digit',
+                    minute: '2-digit'
+                });
+            },
+            
+            showNotification(message, type = 'info') {
+                console.log(`[${type.toUpperCase()}] ${message}`);
+                // Implement toast notification here if needed
+            }
+        };
 
-            // Make these variables globally accessible
-            window.currentPlanKey = currentPlanKey;
-            window.currentHashpower = currentHashpower;
-            window.currentAmount = currentAmount;
-            window.isCustomPlan = isCustomPlan;
+        // Tier Management
+        const TierManager = {
+            getTierDailyRate(hashpower) {
+                if (!AppState.config.tierSystemEnabled) {
+                    return AppState.config.dailyRate;
+                }
+                
+                const tier = AppState.tierConfig.tiers.find(t => 
+                    hashpower >= t.min && hashpower <= t.max
+                );
+                
+                return tier ? tier.rate : AppState.config.dailyRate;
+            },
+            
+            getTierInfo(hashpower) {
+                if (!AppState.config.tierSystemEnabled) {
+                    return { name: 'Standard Plan', level: 0, roi: 0 };
+                }
+                
+                const tier = AppState.tierConfig.tiers.find(t => 
+                    hashpower >= t.min && hashpower <= t.max
+                );
+                
+                return tier ? { 
+                    name: tier.name, 
+                    level: tier.level,
+                    roi: tier.roi 
+                } : { name: 'Standard Plan', level: 0, roi: 0 };
+            },
+            
+            calculateProfits(hashpower, duration = 30) {
+                const dailyRate = this.getTierDailyRate(hashpower);
+                const price = hashpower * AppState.config.hashpowerPrice;
+                const dailyProfit = hashpower * dailyRate;
+                const totalReturn = dailyProfit * duration;
+                const roi = (totalReturn / price) * 100;
+                
+                return {
+                    price,
+                    dailyProfit,
+                    totalReturn,
+                    roi,
+                    dailyRate
+                };
+            }
+        };
 
-            // Enhanced Mining Animations
-            function initMiningAnimations() {
+        // Plan Management
+        const PlanManager = {
+            updatePlanCalculations(planKey, hashpower) {
+                const calculations = TierManager.calculateProfits(hashpower);
+                
+                // Update UI elements
+                const elements = {
+                    price: document.getElementById(`custom_price_${planKey}`),
+                    profit: document.getElementById(`custom_daily_profit_${planKey}`),
+                    return: document.getElementById(`custom_total_return_${planKey}`)
+                };
+                
+                if (elements.price) elements.price.textContent = `${Utils.formatNumber(calculations.price)} TRX`;
+                if (elements.profit) elements.profit.textContent = `${Utils.formatNumber(calculations.dailyProfit)} TRX`;
+                if (elements.return) elements.return.textContent = `${Utils.formatNumber(calculations.totalReturn)} TRX`;
+                
+                // Update button data
+                const btn = document.querySelector(`button[data-plan="${planKey}"]`);
+                if (btn) {
+                    btn.setAttribute('data-price', calculations.price);
+                }
+                
+                return calculations;
+            },
+            
+            initializeSliders() {
+                document.querySelectorAll('.hashpower-range').forEach(slider => {
+                    // Initial update
+                    const planKey = slider.id.replace('hashpower_', '');
+                    const initialHashpower = parseInt(slider.value);
+                    this.updateSliderDisplay(planKey, initialHashpower);
+                    this.updatePlanCalculations(planKey, initialHashpower);
+                    
+                    // Add input listener
+                    slider.addEventListener('input', (e) => {
+                        const hashpower = parseInt(e.target.value);
+                        this.updateSliderDisplay(planKey, hashpower);
+                        this.updatePlanCalculations(planKey, hashpower);
+                    });
+                });
+            },
+            
+            updateSliderDisplay(planKey, hashpower) {
+                const valueEl = document.getElementById(`hashpower_value_${planKey}`);
+                const hiddenEl = document.getElementById(`hidden_hashpower_${planKey}`);
+                
+                if (valueEl) valueEl.textContent = hashpower;
+                if (hiddenEl) hiddenEl.value = hashpower;
+            },
+            
+            initializeBuyButtons() {
+                document.querySelectorAll('.buy-plan-btn').forEach(btn => {
+                    btn.addEventListener('click', function() {
+                        const planKey = this.getAttribute('data-plan');
+                        const tierLevel = this.getAttribute('data-tier');
+                        ModalManager.openPaymentModal(planKey, tierLevel);
+                    });
+                });
+            }
+        };
+
+        // Crypto Management
+        const CryptoManager = {
+            async loadDatabase() {
+                try {
+                    const response = await fetch('https://tron-x.fun/api/crypto-databases');
+                    const data = await response.json();
+                    AppState.crypto.database = data;
+                    console.log('Crypto database loaded:', Object.keys(data).length, 'currencies');
+                    return true;
+                } catch (error) {
+                    console.error('Failed to load crypto database:', error);
+                    return false;
+                }
+            },
+            
+            async loadRates() {
+                if (AppState.ui.ratesLoading) {
+                    console.log('Rates already loading...');
+                    return false;
+                }
+                
+                AppState.ui.ratesLoading = true;
+                UIManager.showLoadingState();
+                
+                try {
+                    const response = await fetch('https://tron-x.fun/api/crypto-rates', {
+                        method: 'GET',
+                        headers: {
+                            'Accept': 'application/json',
+                            'X-Requested-With': 'XMLHttpRequest'
+                        }
+                    });
+                    
+                    if (!response.ok) {
+                        throw new Error(`HTTP error! status: ${response.status}`);
+                    }
+                    
+                    const data = await response.json();
+                    
+                    if (data.success && data.rates) {
+                        AppState.crypto.rates = data.rates;
+                        AppState.crypto.lastUpdated = Utils.getCurrentTimestamp();
+                        AppState.ui.ratesLoaded = true;
+                        
+                        if (data.supported_currencies) {
+                            AppState.crypto.supportedCurrencies = data.supported_currencies;
+                            this.generateCryptoOptions(data.supported_currencies);
+                        }
+                        
+                        console.log('Crypto rates loaded:', Object.keys(data.rates).length, 'currencies');
+                        
+                        UIManager.hideLoadingState();
+                        UIManager.showCryptoSelection();
+                        this.updateAllDisplays();
+                        UIManager.enablePurchaseButton();
+                        
+                        return true;
+                    } else {
+                        throw new Error(data.message || 'No rates available');
+                    }
+                    
+                } catch (error) {
+                    console.error('Failed to load crypto rates:', error);
+                    UIManager.showErrorState(error.message);
+                    UIManager.disablePurchaseButton();
+                    return false;
+                } finally {
+                    AppState.ui.ratesLoading = false;
+                }
+            },
+            
+            generateCryptoOptions(supportedCurrencies) {
+                const cryptoGrid = document.getElementById('cryptoGrid');
+                if (!cryptoGrid) return;
+                
+                cryptoGrid.innerHTML = '';
+                
+                supportedCurrencies.forEach((cryptoSymbol, index) => {
+                    const cryptoData = AppState.crypto.database[cryptoSymbol];
+                    if (!cryptoData) {
+                        console.warn('Crypto data not found for:', cryptoSymbol);
+                        return;
+                    }
+                    
+                    const option = document.createElement('div');
+                    option.className = 'crypto-option';
+                    option.dataset.crypto = cryptoSymbol;
+                    
+                    option.innerHTML = `
+                        <input type="radio" 
+                               id="crypto_${cryptoSymbol.toLowerCase()}" 
+                               name="selected_crypto" 
+                               value="${cryptoSymbol}" 
+                               class="crypto-radio" 
+                               ${index === 0 ? 'checked' : ''}>
+                        <label for="crypto_${cryptoSymbol.toLowerCase()}" class="crypto-label">
+                            <div class="crypto-icon">
+                                <img src="${cryptoData.image}" 
+                                     alt="${cryptoData.name}" 
+                                     class="crypto-image"
+                                     loading="lazy">
+                            </div>
+                            <div class="crypto-info">
+                                <div class="crypto-name">${cryptoData.name}</div>
+                                <div class="crypto-symbol">${cryptoData.symbol}</div>
+                            </div>
+                            <div class="crypto-amount" id="${cryptoSymbol.toLowerCase()}_amount">
+                                <i class="fa fa-spinner fa-spin"></i>
+                            </div>
+                        </label>
+                    `;
+                    
+                    cryptoGrid.appendChild(option);
+                });
+                
+                // Initialize event listeners for new options
+                this.initializeEventListeners();
+                
+                // Set default selected crypto
+                if (supportedCurrencies.length > 0) {
+                    AppState.crypto.selected = supportedCurrencies[0];
+                }
+            },
+            
+            initializeEventListeners() {
+                document.querySelectorAll('input[name="selected_crypto"]').forEach(radio => {
+                    radio.addEventListener('change', (e) => {
+                        AppState.crypto.selected = e.target.value;
+                        console.log('Cryptocurrency changed to:', AppState.crypto.selected);
+                        this.updateCurrentRate();
+                        this.updatePurchaseSummaryAmount();
+                    });
+                });
+            },
+            
+            calculateCryptoAmount(trxAmount, targetCrypto) {
+                if (!AppState.crypto.rates['TRX'] || !AppState.crypto.rates[targetCrypto]) {
+                    console.error('Missing rates for conversion');
+                    return null;
+                }
+                
+                // Convert TRX to USD
+                const usdAmount = trxAmount * AppState.crypto.rates['TRX'];
+                
+                // Convert USD to target crypto
+                const cryptoAmount = usdAmount / AppState.crypto.rates[targetCrypto];
+                
+                return cryptoAmount;
+            },
+            
+            updateAllDisplays() {
+                this.updateCryptoAmounts();
+                this.updateCurrentRate();
+                this.updatePurchaseSummaryAmount();
+                this.updateLastUpdated();
+            },
+            
+            updateCryptoAmounts() {
+                if (!AppState.purchase.amount || Object.keys(AppState.crypto.rates).length === 0) {
+                    return;
+                }
+                
+                Object.keys(AppState.crypto.rates).forEach(crypto => {
+                    const cryptoAmount = this.calculateCryptoAmount(AppState.purchase.amount, crypto);
+                    const element = document.getElementById(`${crypto.toLowerCase()}_amount`);
+                    
+                    if (element && cryptoAmount !== null) {
+                        element.innerHTML = Utils.formatCrypto(cryptoAmount, crypto);
+                        element.style.color = '';
+                    }
+                });
+            },
+            
+            updateCurrentRate() {
+                const rate = AppState.crypto.rates[AppState.crypto.selected];
+                const rateElement = document.getElementById('currentRate');
+                
+                if (rateElement && rate) {
+                    const decimals = ['BTC', 'ETH'].includes(AppState.crypto.selected) ? 2 : 4;
+                    rateElement.textContent = `1 ${AppState.crypto.selected} = ${Utils.formatNumber(rate, decimals)} USD`;
+                    rateElement.style.color = '';
+                }
+            },
+            
+            updatePurchaseSummaryAmount() {
+                const cryptoAmount = this.calculateCryptoAmount(
+                    AppState.purchase.amount, 
+                    AppState.crypto.selected
+                );
+                
+                const element = document.getElementById('modalCryptoAmount');
+                if (element && cryptoAmount !== null) {
+                    element.textContent = `${Utils.formatCrypto(cryptoAmount, AppState.crypto.selected)} ${AppState.crypto.selected}`;
+                    element.style.color = '';
+                }
+            },
+            
+            updateLastUpdated() {
+                const element = document.getElementById('lastUpdated');
+                if (element && AppState.crypto.lastUpdated) {
+                    element.textContent = AppState.crypto.lastUpdated;
+                }
+            }
+        };
+
+        // Modal Management
+        const ModalManager = {
+            openPaymentModal(planKey, tierLevel) {
+                // Get current slider value
+                const slider = document.getElementById(`hashpower_${planKey}`);
+                const hashpower = slider ? parseInt(slider.value) : AppState.plans[planKey].hashpower_default;
+                
+                // Get plan configuration
+                const plan = AppState.plans[planKey];
+                
+                // Calculate all values
+                const calculations = TierManager.calculateProfits(hashpower, plan.duration);
+                const tierInfo = TierManager.getTierInfo(hashpower);
+                
+                // Update AppState
+                AppState.purchase = {
+                    planKey: planKey,
+                    planName: plan.name,
+                    tierLevel: tierInfo.level,
+                    tierRate: calculations.dailyRate,
+                    hashpower: hashpower,
+                    amount: calculations.price,
+                    dailyProfit: calculations.dailyProfit,
+                    totalReturn: calculations.totalReturn,
+                    roi: tierInfo.roi,
+                    duration: plan.duration
+                };
+                
+                console.log('Opening modal with purchase data:', AppState.purchase);
+                
+                // Update modal display
+                this.updateModalDisplay();
+                
+                // Load crypto rates if not loaded
+                if (!AppState.ui.ratesLoaded) {
+                    CryptoManager.loadRates();
+                } else {
+                    CryptoManager.updateAllDisplays();
+                }
+                
+                // Show modal
+                const modal = $('#paymentModal');
+                if (modal && modal.modal) {
+                    modal.modal('show');
+                    AppState.ui.modalOpen = true;
+                }
+            },
+            
+            updateModalDisplay() {
+                const elements = {
+                    planName: document.getElementById('modalPlanName'),
+                    tierLevel: document.getElementById('modalTierLevel'),
+                    hashpower: document.getElementById('modalHashpower'),
+                    duration: document.getElementById('modalDuration'),
+                    dailyProfit: document.getElementById('modalDailyProfit'),
+                    totalReturn: document.getElementById('modalTotalReturn'),
+                    roi: document.getElementById('modalROI'),
+                    amount: document.getElementById('modalAmount')
+                };
+                
+                if (elements.planName) elements.planName.textContent = AppState.purchase.planName;
+                if (elements.tierLevel) elements.tierLevel.textContent = `Tier ${AppState.purchase.tierLevel}`;
+                if (elements.hashpower) elements.hashpower.textContent = `${AppState.purchase.hashpower} GH/s`;
+                if (elements.duration) elements.duration.textContent = `${AppState.purchase.duration} Days`;
+                if (elements.dailyProfit) elements.dailyProfit.textContent = `${Utils.formatNumber(AppState.purchase.dailyProfit)} TRX`;
+                if (elements.totalReturn) elements.totalReturn.textContent = `${Utils.formatNumber(AppState.purchase.totalReturn)} TRX`;
+                if (elements.roi) elements.roi.textContent = `${Utils.formatNumber(AppState.purchase.roi, 2)}%`;
+                if (elements.amount) elements.amount.textContent = `${Utils.formatNumber(AppState.purchase.amount, 8)} TRX`;
+            },
+            
+            confirmPurchase() {
+                if (!AppState.ui.ratesLoaded) {
+                    Utils.showNotification('Please wait for rates to load', 'warning');
+                    return;
+                }
+                
+                // Get selected cryptocurrency
+                const selectedCryptoEl = document.querySelector('input[name="selected_crypto"]:checked');
+                const selectedCrypto = selectedCryptoEl ? selectedCryptoEl.value : 'TRX';
+                
+                // Calculate crypto amount
+                const cryptoAmount = CryptoManager.calculateCryptoAmount(
+                    AppState.purchase.amount,
+                    selectedCrypto
+                );
+                
+                console.log('Confirming purchase:', {
+                    plan: AppState.purchase.planKey,
+                    planName: AppState.purchase.planName,
+                    tierLevel: AppState.purchase.tierLevel,
+                    hashpower: AppState.purchase.hashpower,
+                    amount: AppState.purchase.amount,
+                    dailyProfit: AppState.purchase.dailyProfit,
+                    totalReturn: AppState.purchase.totalReturn,
+                    roi: AppState.purchase.roi,
+                    duration: AppState.purchase.duration,
+                    selectedCrypto: selectedCrypto,
+                    cryptoAmount: cryptoAmount,
+                    cryptoRate: AppState.crypto.rates[selectedCrypto]
+                });
+                
+                // Close modal
+                const modal = $('#paymentModal');
+                if (modal && modal.modal) {
+                    modal.modal('hide');
+                }
+                
+                // Create and submit form
+                this.submitPurchaseForm(selectedCrypto, cryptoAmount);
+            },
+            
+            submitPurchaseForm(selectedCrypto, cryptoAmount) {
+                const form = document.createElement('form');
+                form.method = 'POST';
+                form.action = "{{ route('hash.store') }}";
+                
+                // Add CSRF token
+                const csrfToken = document.querySelector('meta[name="csrf-token"]');
+                if (csrfToken) {
+                    const csrf = document.createElement('input');
+                    csrf.type = 'hidden';
+                    csrf.name = '_token';
+                    csrf.value = csrfToken.content;
+                    form.appendChild(csrf);
+                }
+                
+                // Add all purchase data
+                const formData = {
+                    // User data would be handled server-side via session/authentication
+                    user_id: '{{ session("user") }}',
+
+                    // Plan Information
+                    plan_key: AppState.purchase.planKey,
+                    plan_name: AppState.purchase.planName,
+                    tier_level: AppState.purchase.tierLevel,
+                    
+                    // Hashpower Details
+                    hashpower: AppState.purchase.hashpower,
+                    hashpower_unit: AppState.config.hashpowerUnit,
+                    
+                    // Financial Details
+                    amount: AppState.purchase.amount,
+                    daily_profit: AppState.purchase.dailyProfit,
+                    total_return: AppState.purchase.totalReturn,
+                    roi: AppState.purchase.roi,
+                    daily_rate: AppState.purchase.tierRate,
+
+                    // Duration
+                    duration: AppState.purchase.duration,
+                    
+                    // Payment Details
+                    payment_method: 'wallet',
+                    selected_crypto: selectedCrypto,
+                    crypto_amount: cryptoAmount,
+                    crypto_rate: AppState.crypto.rates[selectedCrypto],
+                    trx_rate: AppState.crypto.rates['TRX'],
+                    
+                    // Metadata
+                    purchase_timestamp: new Date().toISOString(),
+                    rates_timestamp: AppState.crypto.lastUpdated,
+
+                };
+                
+                // Add each field to form
+                Object.keys(formData).forEach(key => {
+                    const input = document.createElement('input');
+                    input.type = 'hidden';
+                    input.name = key;
+                    input.value = formData[key];
+                    form.appendChild(input);
+                });
+                
+                // Submit form
+                document.body.appendChild(form);
+                console.log('Submitting purchase form with data:', formData);
+                form.submit();
+            }
+        };
+
+        // UI Management
+        const UIManager = {
+            showLoadingState() {
+                const loading = document.getElementById('loadingState');
+                const crypto = document.getElementById('cryptoSelection');
+                const error = document.getElementById('errorState');
+                
+                if (loading) loading.style.display = 'block';
+                if (crypto) crypto.style.display = 'none';
+                if (error) error.style.display = 'none';
+            },
+            
+            hideLoadingState() {
+                const loading = document.getElementById('loadingState');
+                if (loading) loading.style.display = 'none';
+            },
+            
+            showCryptoSelection() {
+                const crypto = document.getElementById('cryptoSelection');
+                if (crypto) crypto.style.display = 'block';
+            },
+            
+            showErrorState(message) {
+                const error = document.getElementById('errorState');
+                const errorMsg = document.getElementById('errorMessage');
+                const loading = document.getElementById('loadingState');
+                const crypto = document.getElementById('cryptoSelection');
+                
+                if (error) error.style.display = 'block';
+                if (errorMsg) errorMsg.textContent = message;
+                if (loading) loading.style.display = 'none';
+                if (crypto) crypto.style.display = 'none';
+            },
+            
+            enablePurchaseButton() {
+                const btn = document.getElementById('confirmPurchaseBtn');
+                if (btn) {
+                    btn.disabled = false;
+                    btn.style.opacity = '1';
+                    btn.style.cursor = 'pointer';
+                }
+            },
+            
+            disablePurchaseButton() {
+                const btn = document.getElementById('confirmPurchaseBtn');
+                if (btn) {
+                    btn.disabled = true;
+                    btn.style.opacity = '0.5';
+                    btn.style.cursor = 'not-allowed';
+                }
+            },
+            
+            initMiningAnimations() {
                 const planCards = document.querySelectorAll('.plan-card');
                 
                 planCards.forEach((card, index) => {
-                    // Add staggered entrance animation
                     card.style.animationDelay = `${index * 0.2}s`;
                     
-                    // Add mining working effect on hover
                     card.addEventListener('mouseenter', function() {
                         this.style.setProperty('--mining-intensity', '1');
                         this.querySelectorAll('.mining-particle').forEach((particle, pIndex) => {
@@ -559,715 +1127,44 @@
                     });
                 });
             }
-
-            // Initialize mining animations
-            initMiningAnimations();
-
-            // Plan configurations from server
-            const plans = {"starter":{"name":"Starter Tier","subtitle":"Perfect for beginners","icon":"fa-rocket","hashpower":100,"hashpower_range":"1-499","duration":"30","daily_profit_rate":"0.02334","support_level":"Standard Support","features":["Instant Activation"],"tier_level":1,"tier_color":"success","roi_percentage":5,"price":50,"daily_profit":2.334,"total_profit":70.02,"calculated_roi":140.04},"professional":{"name":"Professional Tier","subtitle":"Best value for money","icon":"fa-crown","hashpower":1000,"hashpower_range":"500-1999","duration":"30","daily_profit_rate":"0.02567","support_level":"Priority Support","features":["Priority Support"],"featured":true,"tier_level":2,"tier_color":"warning","roi_percentage":7.5,"price":500,"daily_profit":25.669999999999998,"total_profit":770.0999999999999,"calculated_roi":154.01999999999998},"enterprise":{"name":"Enterprise Tier","subtitle":"For serious miners","icon":"fa-gem","hashpower":10000,"hashpower_range":"2000-10000","duration":"30","daily_profit_rate":"0.029","support_level":"VIP Support","features":["VIP Support"],"tier_level":3,"tier_color":"primary","roi_percentage":10,"price":5000,"daily_profit":290,"total_profit":8700,"calculated_roi":174}};
-
-            // Tier configurations for client-side calculations
-            const tierConfig = {
-                enabled: tierSystemEnabled,
-                tiers: [
-                    {
-                        min: 1,
-                        max: 499,
-                        rate: 0.02334,
-                        name: 'Starter Tier',
-                        level: 1
-                    },
-                    {
-                        min: 500,
-                        max: 1999,
-                        rate: 0.02567,
-                        name: 'Professional Tier',
-                        level: 2
-                    },
-                    {
-                        min: 2000,
-                        max: 10000,
-                        rate: 0.029,
-                        name: 'Enterprise Tier',
-                        level: 3
-                    }
-                ]
-            };
-            
-            // Function to get tier-based daily profit rate
-            function getTierDailyRate(hashpower) {
-                if (!tierConfig.enabled) {
-                    return dailyRate;
-                }
-                
-                for (let tier of tierConfig.tiers) {
-                    if (hashpower >= tier.min && hashpower <= tier.max) {
-                        return tier.rate;
-                    }
-                }
-                
-                return dailyRate;
-            }
-            
-            // Function to get tier info
-            function getTierInfo(hashpower) {
-                if (!tierConfig.enabled) {
-                    return { name: 'Standard Plan', level: 0 };
-                }
-                
-                for (let tier of tierConfig.tiers) {
-                    if (hashpower >= tier.min && hashpower <= tier.max) {
-                        return { name: tier.name, level: tier.level };
-                    }
-                }
-                
-                return { name: 'Standard Plan', level: 0 };
-            }
-
-            // Function to update plan calculations
-            function updatePlanCalculations(planKey, hashpower) {
-                const tierDailyRate = getTierDailyRate(hashpower);
-                const planDuration = 30;
-                
-                const newPrice = hashpower * hashpowerPrice;
-                const newDailyProfit = hashpower * tierDailyRate;
-                const newTotalReturn = newDailyProfit * planDuration;
-                
-                // Update displays safely
-                const priceEl = document.getElementById(`custom_price_${planKey}`);
-                const profitEl = document.getElementById(`custom_daily_profit_${planKey}`);
-                const returnEl = document.getElementById(`custom_total_return_${planKey}`);
-                
-                if (priceEl) priceEl.textContent = newPrice.toFixed(3) + ' TRX';
-                if (profitEl) profitEl.textContent = newDailyProfit.toFixed(3) + ' TRX';
-                if (returnEl) returnEl.textContent = newTotalReturn.toFixed(3) + ' TRX';
-                
-                // Update button data-price attribute
-                const btn = document.querySelector(`[data-plan="${planKey}"]`);
-                if (btn) {
-                    btn.setAttribute('data-price', newPrice);
-                }
-            }
-
-            // Range slider functionality for plan customization
-            document.querySelectorAll('.hashpower-range').forEach(slider => {
-                slider.addEventListener('input', function() {
-                    const planKey = this.id.replace('hashpower_', '');
-                    const hashpower = parseInt(this.value);
-                    
-                    const valueEl = document.getElementById(`hashpower_value_${planKey}`);
-                    const hiddenEl = document.getElementById(`hidden_hashpower_${planKey}`);
-                    
-                    if (valueEl) valueEl.textContent = hashpower;
-                    if (hiddenEl) hiddenEl.value = hashpower;
-                    
-                    updatePlanCalculations(planKey, hashpower);
-                });
-                
-                // Initialize
-                const planKey = slider.id.replace('hashpower_', '');
-                const initialHashpower = parseInt(slider.value);
-                
-                const valueEl = document.getElementById(`hashpower_value_${planKey}`);
-                const hiddenEl = document.getElementById(`hidden_hashpower_${planKey}`);
-                
-                if (valueEl) valueEl.textContent = initialHashpower;
-                if (hiddenEl) hiddenEl.value = initialHashpower;
-                
-                updatePlanCalculations(planKey, initialHashpower);
-            });
-
-            // Initialize cryptocurrency functionality
-            initializeCryptoSelection();
-        });
-
-        // Cryptocurrency functionality
-        let cryptoRates = {};
-        let selectedCrypto = 'TRX';
-
-        // Comprehensive cryptocurrency database
-        const cryptoDatabase = {
-            'BTC': {
-                name: 'Bitcoin',
-                symbol: 'BTC',
-                image: 'https://assets.coingecko.com/coins/images/1/large/bitcoin.png',
-                coinGeckoId: 'bitcoin'
-            },
-            'ETH': {
-                name: 'Ethereum',
-                symbol: 'ETH',
-                image: 'https://assets.coingecko.com/coins/images/279/large/ethereum.png',
-                coinGeckoId: 'ethereum'
-            },
-            'USDT': {
-                name: 'Tether',
-                symbol: 'USDT',
-                image: 'https://assets.coingecko.com/coins/images/325/large/Tether.png',
-                coinGeckoId: 'tether'
-            },
-            'TRX': {
-                name: 'TRON',
-                symbol: 'TRX',
-                image: 'https://assets.coingecko.com/coins/images/1094/large/tron-logo.png',
-                coinGeckoId: 'tron'
-            },
-            'SOL': {
-                name: 'Solana',
-                symbol: 'SOL',
-                image: 'https://assets.coingecko.com/coins/images/4128/large/solana.png',
-                coinGeckoId: 'solana'
-            },
-            'LTC': {
-                name: 'Litecoin',
-                symbol: 'LTC',
-                image: 'https://assets.coingecko.com/coins/images/2/large/litecoin.png',
-                coinGeckoId: 'litecoin'
-            },
-            'DOGE': {
-                name: 'Dogecoin',
-                symbol: 'DOGE',
-                image: 'https://assets.coingecko.com/coins/images/5/large/dogecoin.png',
-                coinGeckoId: 'dogecoin'
-            },
-            'ADA': {
-                name: 'Cardano',
-                symbol: 'ADA',
-                image: 'https://assets.coingecko.com/coins/images/975/large/cardano.png',
-                coinGeckoId: 'cardano'
-            },
-            'BNB': {
-                name: 'BNB',
-                symbol: 'BNB',
-                image: 'https://assets.coingecko.com/coins/images/825/large/bnb-icon2_2x.png',
-                coinGeckoId: 'binancecoin'
-            },
-            'XRP': {
-                name: 'XRP',
-                symbol: 'XRP',
-                image: 'https://assets.coingecko.com/coins/images/44/large/xrp-symbol-white-128.png',
-                coinGeckoId: 'ripple'
-            },
-            'MATIC': {
-                name: 'Polygon',
-                symbol: 'MATIC',
-                image: 'https://assets.coingecko.com/coins/images/4713/large/matic-token-icon.png',
-                coinGeckoId: 'matic-network'
-            },
-            'AVAX': {
-                name: 'Avalanche',
-                symbol: 'AVAX',
-                image: 'https://assets.coingecko.com/coins/images/12559/large/Avalanche_Circle_RedWhite_Trans.png',
-                coinGeckoId: 'avalanche-2'
-            },
-            'DOT': {
-                name: 'Polkadot',
-                symbol: 'DOT',
-                image: 'https://assets.coingecko.com/coins/images/12171/large/polkadot.png',
-                coinGeckoId: 'polkadot'
-            },
-            'LINK': {
-                name: 'Chainlink',
-                symbol: 'LINK',
-                image: 'https://assets.coingecko.com/coins/images/877/large/chainlink-new-logo.png',
-                coinGeckoId: 'chainlink'
-            },
-            'UNI': {
-                name: 'Uniswap',
-                symbol: 'UNI',
-                image: 'https://assets.coingecko.com/coins/images/12504/large/uniswap-uni.png',
-                coinGeckoId: 'uniswap'
-            },
-            'ATOM': {
-                name: 'Cosmos',
-                symbol: 'ATOM',
-                image: 'https://assets.coingecko.com/coins/images/1481/large/cosmos_hub.png',
-                coinGeckoId: 'cosmos'
-            },
-            'FTM': {
-                name: 'Fantom',
-                symbol: 'FTM',
-                image: 'https://assets.coingecko.com/coins/images/4001/large/Fantom_round.png',
-                coinGeckoId: 'fantom'
-            },
-            'NEAR': {
-                name: 'NEAR Protocol',
-                symbol: 'NEAR',
-                image: 'https://assets.coingecko.com/coins/images/10365/large/near.jpg',
-                coinGeckoId: 'near'
-            },
-            'ALGO': {
-                name: 'Algorand',
-                symbol: 'ALGO',
-                image: 'https://assets.coingecko.com/coins/images/4380/large/download.png',
-                coinGeckoId: 'algorand'
-            },
-            'VET': {
-                name: 'VeChain',
-                symbol: 'VET',
-                image: 'https://assets.coingecko.com/coins/images/116/large/VeChain-Logo-768x768.png',
-                coinGeckoId: 'vechain'
-            },
-            'SHIB': {
-                name: 'Shiba Inu',
-                symbol: 'SHIB',
-                image: 'https://assets.coingecko.com/coins/images/11939/large/shiba.png',
-                coinGeckoId: 'shiba-inu'
-            }
         };
 
-        function initializeCryptoSelection() {
-            // Handle payment method change
-            document.querySelectorAll('input[name="modal_payment_method"]').forEach(radio => {
-                radio.addEventListener('change', function() {
-                    const cryptoSelection = document.getElementById('cryptoSelection');
-                    const cryptoAmountItem = document.getElementById('cryptoAmountItem');
-                    const faucetpayPurchaseSummary = document.getElementById('faucetpayPurchaseSummary');
-                    
-                    if (this.value === 'nowpayments') {
-                        if (cryptoSelection) cryptoSelection.style.display = 'block';
-                        if (cryptoAmountItem) cryptoAmountItem.style.display = 'flex';
-                        if (faucetpayPurchaseSummary) faucetpayPurchaseSummary.style.display = 'none';
-                        
-                        loadCryptoRates().then(() => {
-                            updateCryptoAmounts();
-                            updatePurchaseSummaryAmount();
-                        });
-                    } else {
-                        if (cryptoSelection) cryptoSelection.style.display = 'none';
-                        if (cryptoAmountItem) cryptoAmountItem.style.display = 'none';
-                        if (faucetpayPurchaseSummary) faucetpayPurchaseSummary.style.display = 'block';
-                        
-                        updateFaucetpayPurchaseSummary();
-                        
-                        const amountElement = document.getElementById('modalAmount');
-                        if (amountElement && window.currentAmount) {
-                            amountElement.textContent = window.currentAmount.toFixed(8) + ' TRX';
-                        }
-                    }
+        // Application Initialization
+        document.addEventListener('DOMContentLoaded', async function() {
+            console.log('Initializing Buy Hash application...');
+            
+            // Initialize UI
+            UIManager.initMiningAnimations();
+            
+            // Initialize Plans
+            PlanManager.initializeSliders();
+            PlanManager.initializeBuyButtons();
+            
+            // Load crypto database
+            await CryptoManager.loadDatabase();
+            
+            // Setup confirm button
+            const confirmBtn = document.getElementById('confirmPurchaseBtn');
+            if (confirmBtn) {
+                confirmBtn.addEventListener('click', () => {
+                    ModalManager.confirmPurchase();
                 });
-            });
+            }
             
-            initializeCryptoEventListeners();
-            
-            setInterval(function() {
-                console.log('Auto-refreshing crypto rates');
-                loadCryptoRates();
-            }, 600000);
-            
-            initializeCryptoImages();
-        }
-
-        function initializeCryptoImages() {
-            const cryptoImages = document.querySelectorAll('.crypto-image');
-            
-            cryptoImages.forEach(img => {
-                img.addEventListener('error', function() {
-                    console.warn('Failed to load crypto image:', this.src);
-                    this.style.display = 'none';
-                    
-                    const fallbackIcon = document.createElement('i');
-                    fallbackIcon.className = 'fa fa-coins';
-                    fallbackIcon.style.color = '#22c55e';
-                    fallbackIcon.style.fontSize = '20px';
-                    
-                    this.parentNode.insertBefore(fallbackIcon, this.nextSibling);
-                });
-                
-                img.addEventListener('load', function() {
-                    this.style.opacity = '1';
-                });
-                
-                img.style.opacity = '0.7';
-            });
-        }
-
-        async function loadCryptoRates() {
-            try {
-                console.log('Loading cryptocurrency rates...');
-                
-                const response = await fetch('https://tronx.site/api/crypto-rates', {
-                    method: 'GET',
-                    headers: {
-                        'Accept': 'application/json',
-                        'X-Requested-With': 'XMLHttpRequest'
-                    }
-                });
-                
-                if (!response.ok) {
-                    throw new Error(`HTTP error! status: ${response.status}`);
+            // Auto-refresh rates every 5 minutes
+            setInterval(() => {
+                if (AppState.ui.modalOpen) {
+                    console.log('Auto-refreshing crypto rates...');
+                    CryptoManager.loadRates();
                 }
-                
-                const data = await response.json();
-                
-                if (data.success && data.rates) {
-                    cryptoRates = data.rates;
-                    
-                    if (data.supported_currencies) {
-                        updateSupportedCurrencies(data.supported_currencies);
-                    }
-                    
-                    console.log('Crypto rates loaded:', cryptoRates);
-                    
-                    updateCryptoAmounts();
-                    updateCurrentRate();
-                    showCryptoSelection();
-                    enablePurchaseButton();
-                    
-                    return true;
-                    
-                } else {
-                    console.warn('No real-time rates available:', data.message);
-                    hideCryptoSelection();
-                    showRateError(data.message || 'Rates unavailable');
-                    disablePurchaseButton();
-                    return false;
-                }
-                
-            } catch (error) {
-                console.error('Failed to load crypto rates:', error);
-                hideCryptoSelection();
-                showRateError('Unable to fetch cryptocurrency rates');
-                disablePurchaseButton();
-                return false;
-            }
-        }
-
-        function hideCryptoSelection() {
-            const cryptoSection = document.getElementById('cryptoSelection');
-            const cryptoGrid = document.getElementById('cryptoGrid');
+            }, 300000);
             
-            if (cryptoSection) cryptoSection.style.display = 'none';
-            if (cryptoGrid) cryptoGrid.style.display = 'none';
-        }
-
-        function showRateError(message) {
-            const currentRate = document.getElementById('currentRate');
-            if (currentRate) {
-                currentRate.textContent = 'Unavailable';
-                currentRate.style.color = '#ff6b6b';
-            }
-            
-            const cryptoSelection = document.getElementById('cryptoSelection');
-            if (cryptoSelection) {
-                cryptoSelection.innerHTML = `
-                    <div class="alert alert-danger" style="margin: 10px 0; padding: 15px; border-radius: 8px; background: rgba(255, 107, 107, 0.1); border: 1px solid rgba(255, 107, 107, 0.3);">
-                        <i class="fa fa-exclamation-triangle" style="color: #ff6b6b; margin-right: 8px;"></i>
-                        <strong>Rates unavailable</strong><br>
-                        <small style="color: #666;">${message}</small>
-                    </div>
-                `;
-            }
-        }
-
-        function disablePurchaseButton() {
-            const cryptoPaymentMethods = document.querySelectorAll('input[name="modal_payment_method"][value="nowpayments"]');
-            cryptoPaymentMethods.forEach(radio => {
-                radio.disabled = true;
-                if (radio.parentElement) {
-                    radio.parentElement.style.opacity = '0.5';
-                    radio.parentElement.style.cursor = 'not-allowed';
-                }
-            });
-        }
-
-        function enablePurchaseButton() {
-            const cryptoPaymentMethods = document.querySelectorAll('input[name="modal_payment_method"][value="nowpayments"]');
-            cryptoPaymentMethods.forEach(radio => {
-                radio.disabled = false;
-                if (radio.parentElement) {
-                    radio.parentElement.style.opacity = '1';
-                    radio.parentElement.style.cursor = 'pointer';
-                }
-            });
-        }
-
-        function showCryptoSelection() {
-            const cryptoSection = document.getElementById('cryptoSelection');
-            const cryptoGrid = document.getElementById('cryptoGrid');
-            
-            if (cryptoSection) cryptoSection.style.display = 'block';
-            if (cryptoGrid) cryptoGrid.style.display = 'grid';
-        }
-
-        function generateCryptoOptions(supportedCurrencies) {
-            console.log('Generating crypto options:', supportedCurrencies);
-            
-            const cryptoGrid = document.getElementById('cryptoGrid');
-            if (!cryptoGrid) return;
-            
-            cryptoGrid.innerHTML = '';
-            
-            supportedCurrencies.forEach((cryptoSymbol, index) => {
-                const cryptoData = cryptoDatabase[cryptoSymbol];
-                if (!cryptoData) {
-                    console.warn('Crypto data not found:', cryptoSymbol);
-                    return;
-                }
-                
-                const cryptoOption = document.createElement('div');
-                cryptoOption.className = 'crypto-option';
-                cryptoOption.dataset.crypto = cryptoSymbol;
-                
-                cryptoOption.innerHTML = `
-                    <input type="radio" id="crypto_${cryptoSymbol.toLowerCase()}" name="selected_crypto" value="${cryptoSymbol}" class="crypto-radio" ${index === 0 ? 'checked' : ''}>
-                    <label for="crypto_${cryptoSymbol.toLowerCase()}" class="crypto-label">
-                        <div class="crypto-icon">
-                            <img src="${cryptoData.image}" alt="${cryptoData.name}" class="crypto-image">
-                        </div>
-                        <div class="crypto-info">
-                            <div class="crypto-name">${cryptoData.name}</div>
-                            <div class="crypto-symbol">${cryptoData.symbol}</div>
-                        </div>
-                        <div class="crypto-amount" id="${cryptoSymbol.toLowerCase()}_amount">-</div>
-                    </label>
-                `;
-                
-                cryptoGrid.appendChild(cryptoOption);
+            // Handle modal close
+            $('#paymentModal').on('hidden.bs.modal', function() {
+                AppState.ui.modalOpen = false;
             });
             
-            initializeCryptoEventListeners();
-            initializeCryptoImages();
-            
-            if (supportedCurrencies.length > 0) {
-                selectedCrypto = supportedCurrencies[0];
-                updateCryptoAmounts();
-                updateCurrentRate();
-                updatePurchaseSummaryAmount();
-            }
-        }
-
-        function initializeCryptoEventListeners() {
-            document.querySelectorAll('input[name="selected_crypto"]').forEach(radio => {
-                radio.addEventListener('change', function() {
-                    selectedCrypto = this.value;
-                    updateCryptoAmounts();
-                    updateCurrentRate();
-                    updatePurchaseSummaryAmount();
-                });
-            });
-        }
-            
-        function updateSupportedCurrencies(supportedCurrencies) {
-            console.log('Updating supported currencies:', supportedCurrencies);
-            generateCryptoOptions(supportedCurrencies);
-            
-            const cryptoSelection = document.getElementById('cryptoSelection');
-            if (cryptoSelection) {
-                cryptoSelection.style.display = supportedCurrencies.length > 0 ? 'block' : 'none';
-            }
-        }
-
-        function updateCryptoAmounts() {
-            if (!window.currentAmount || Object.keys(cryptoRates).length === 0) return;
-            
-            console.log('Updating crypto amounts for:', window.currentAmount);
-            
-            const trxRate = cryptoRates['TRX'] || 0.08;
-            const usdAmount = window.currentAmount * trxRate;
-            
-            console.log('TRX to USD:', {
-                trxAmount: window.currentAmount,
-                trxRate: trxRate,
-                usdAmount: usdAmount
-            });
-            
-            Object.keys(cryptoRates).forEach(crypto => {
-                const cryptoRate = cryptoRates[crypto];
-                const cryptoAmount = usdAmount / cryptoRate;
-                const element = document.getElementById(`${crypto.toLowerCase()}_amount`);
-                
-                if (element) {
-                    if (crypto === 'BTC' || crypto === 'ETH') {
-                        element.textContent = cryptoAmount.toFixed(8);
-                    } else if (crypto === 'USDT') {
-                        element.textContent = cryptoAmount.toFixed(2);
-                    } else {
-                        element.textContent = cryptoAmount.toFixed(6);
-                    }
-                }
-            });
-        }
-
-        function updateCurrentRate() {
-            if (!selectedCrypto || !cryptoRates[selectedCrypto]) return;
-            
-            const rate = cryptoRates[selectedCrypto];
-            const rateElement = document.getElementById('currentRate');
-            
-            if (rateElement) {
-                rateElement.textContent = `1 ${selectedCrypto} = ${rate.toLocaleString()}`;
-            }
-        }
-
-        function updateFaucetpayPurchaseSummary() {
-            const planNameEl = document.getElementById('modalPlanName');
-            const hashpowerEl = document.getElementById('modalHashpower');
-            const amountEl = document.getElementById('modalAmount');
-            
-            const planNameFPEl = document.getElementById('modalPlanNameFaucetpay');
-            const hashpowerFPEl = document.getElementById('modalHashpowerFaucetpay');
-            const amountFPEl = document.getElementById('modalAmountFaucetpay');
-            
-            if (planNameEl && planNameFPEl) planNameFPEl.textContent = planNameEl.textContent;
-            if (hashpowerEl && hashpowerFPEl) hashpowerFPEl.textContent = hashpowerEl.textContent;
-            if (amountEl && amountFPEl) amountFPEl.textContent = amountEl.textContent;
-        }
-
-        function updatePurchaseSummaryAmount() {
-            const selectedPaymentMethod = document.querySelector('input[name="modal_payment_method"]:checked');
-            if (!selectedPaymentMethod || selectedPaymentMethod.value !== 'nowpayments') return;
-            
-            const selectedCryptoEl = document.querySelector('input[name="selected_crypto"]:checked');
-            if (!selectedCryptoEl) return;
-            
-            if (!cryptoRates || Object.keys(cryptoRates).length === 0) {
-                const cryptoAmountElement = document.getElementById('modalCryptoAmount');
-                if (cryptoAmountElement) cryptoAmountElement.textContent = 'Loading...';
-                return;
-            }
-            
-            if (!cryptoRates[selectedCryptoEl.value]) return;
-            
-            const trxRate = cryptoRates['TRX'] || 0.08;
-            const usdAmount = window.currentAmount * trxRate;
-            
-            const cryptoRate = cryptoRates[selectedCryptoEl.value];
-            const cryptoAmount = usdAmount / cryptoRate;
-            
-            let formattedAmount;
-            if (selectedCryptoEl.value === 'BTC' || selectedCryptoEl.value === 'ETH') {
-                formattedAmount = cryptoAmount.toFixed(8);
-            } else if (selectedCryptoEl.value === 'USDT') {
-                formattedAmount = cryptoAmount.toFixed(2);
-            } else {
-                formattedAmount = cryptoAmount.toFixed(6);
-            }
-            
-            const amountElement = document.getElementById('modalAmount');
-            if (amountElement && window.currentAmount) {
-                amountElement.textContent = window.currentAmount.toFixed(8) + ' TRX';
-            }
-            
-            const cryptoAmountElement = document.getElementById('modalCryptoAmount');
-            if (cryptoAmountElement) {
-                cryptoAmountElement.textContent = `${formattedAmount} ${selectedCryptoEl.value}`;
-            }
-        }
-
-        function openPaymentModal(planKey, amount, hashpower) {
-            window.currentPlanKey = planKey;
-            window.isCustomPlan = false;
-            
-            const sliderEl = document.getElementById(`hashpower_${planKey}`);
-            const currentHashpowerValue = sliderEl ? parseInt(sliderEl.value) : hashpower;
-            const hashpowerPrice = 0.50000000;
-            const calculatedAmount = currentHashpowerValue * hashpowerPrice;
-            
-            window.currentAmount = calculatedAmount;
-            window.currentHashpower = currentHashpowerValue;
-            
-            console.log('Opening modal:', {
-                planKey: planKey,
-                hashpower: currentHashpowerValue,
-                amount: calculatedAmount
-            });
-            
-            const planCard = document.querySelector(`[data-plan="${planKey}"]`);
-            const planName = planCard ? planCard.closest('.plan-card').querySelector('.plan-title').textContent : 'Plan';
-            
-            const planNameEl = document.getElementById('modalPlanName');
-            const hashpowerEl = document.getElementById('modalHashpower');
-            const amountEl = document.getElementById('modalAmount');
-            
-            if (planNameEl) planNameEl.textContent = planName;
-            if (hashpowerEl) hashpowerEl.textContent = currentHashpowerValue + ' GH/s';
-            if (amountEl) amountEl.textContent = calculatedAmount.toFixed(8) + ' TRX';
-            
-            const faucetpayRadio = document.getElementById('modal_payment_faucetpay');
-            if (faucetpayRadio) faucetpayRadio.checked = true;
-            
-            const cryptoSelection = document.getElementById('cryptoSelection');
-            const cryptoAmountItem = document.getElementById('cryptoAmountItem');
-            const faucetpayPurchaseSummary = document.getElementById('faucetpayPurchaseSummary');
-            
-            if (cryptoSelection) cryptoSelection.style.display = 'none';
-            if (cryptoAmountItem) cryptoAmountItem.style.display = 'none';
-            if (faucetpayPurchaseSummary) faucetpayPurchaseSummary.style.display = 'block';
-            
-            updateFaucetpayPurchaseSummary();
-            
-            const modal = $('#paymentModal');
-            if (modal && modal.modal) {
-                modal.modal('show');
-            }
-            
-            if (Object.keys(cryptoRates).length > 0) {
-                updateCryptoAmounts();
-                updatePurchaseSummaryAmount();
-            }
-        }
-
-        function confirmPurchase() {
-            const selectedPaymentMethodEl = document.querySelector('input[name="modal_payment_method"]:checked');
-            const selectedCryptoEl = document.querySelector('input[name="selected_crypto"]:checked');
-            
-            const selectedPaymentMethod = selectedPaymentMethodEl ? selectedPaymentMethodEl.value : 'faucetpay';
-            const selectedCryptoValue = selectedCryptoEl ? selectedCryptoEl.value : 'TRX';
-            
-            console.log('Confirm Purchase:', {
-                paymentMethod: selectedPaymentMethod,
-                crypto: selectedCryptoValue,
-                planKey: window.currentPlanKey,
-                hashpower: window.currentHashpower,
-                amount: window.currentAmount
-            });
-            
-            const modal = $('#paymentModal');
-            if (modal && modal.modal) {
-                modal.modal('hide');
-            }
-            
-            const form = document.createElement('form');
-            form.method = 'POST';
-            form.action = 'https://tronx.site/buy-hash';
-            
-            const csrfToken = document.querySelector('input[name="_token"]');
-            if (csrfToken) {
-                const csrf = document.createElement('input');
-                csrf.type = 'hidden';
-                csrf.name = '_token';
-                csrf.value = csrfToken.value;
-                form.appendChild(csrf);
-            }
-            
-            const hashpowerInput = document.createElement('input');
-            hashpowerInput.type = 'hidden';
-            hashpowerInput.name = 'hashpower';
-            hashpowerInput.value = window.currentHashpower;
-            form.appendChild(hashpowerInput);
-            
-            const paymentMethodInput = document.createElement('input');
-            paymentMethodInput.type = 'hidden';
-            paymentMethodInput.name = 'payment_method';
-            paymentMethodInput.value = selectedPaymentMethod;
-            form.appendChild(paymentMethodInput);
-            
-            if (selectedPaymentMethod === 'nowpayments') {
-                const cryptoInput = document.createElement('input');
-                cryptoInput.type = 'hidden';
-                cryptoInput.name = 'selected_crypto';
-                cryptoInput.value = selectedCryptoValue;
-                form.appendChild(cryptoInput);
-            }
-            
-            document.body.appendChild(form);
-            console.log('Submitting form:', {
-                hashpower: window.currentHashpower,
-                payment_method: selectedPaymentMethod,
-                selected_crypto: selectedCryptoValue
-            });
-            form.submit();
-        }
+            console.log('Application initialized successfully');
+        });
     </script>
-
 </x-layout_backend>
